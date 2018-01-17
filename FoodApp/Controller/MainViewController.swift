@@ -11,7 +11,7 @@ import Cartography
 
 var mainView: MainView!
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,12 +19,16 @@ class MainViewController: UIViewController {
         mainView = MainView(frame: CGRect.zero)
         self.view.addSubview(mainView)
         
+        
+        mainView.addressTextField.delegate = self
+        
+        
+        
         // AutoLayout
-        constrain (mainView, self.view) {mainView, superView in
-            mainView.left == superView.left
-            mainView.right == superView.right
-            mainView.top == superView.top
-            mainView.bottom == superView.bottom
+
+        constrain (mainView) { mainView in
+            mainView.edges == inset (mainView.superview!.edges, 0,0,0,0)
+            
             
         }
         // Do any additional setup after loading the view.
@@ -35,7 +39,15 @@ class MainViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    
+    // Keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        textField.text = "The address is \(textField.text!)"
+        return false
+    }
+    
+    
     /*
     // MARK: - Navigation
 
