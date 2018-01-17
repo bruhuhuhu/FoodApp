@@ -9,6 +9,7 @@
 import UIKit
 import Cartography
 
+
 var mainView: MainView!
 
 class MainViewController: UIViewController, UITextFieldDelegate {
@@ -18,20 +19,14 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         
         mainView = MainView(frame: CGRect.zero)
         self.view.addSubview(mainView)
-        
-        
+        self.view.backgroundColor = UIColor.lightGray
+    
         mainView.addressTextField.delegate = self
         
-        
-        
         // AutoLayout
-
         constrain (mainView) { mainView in
             mainView.edges == inset (mainView.superview!.edges, 0,0,0,0)
-            
-            
         }
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,13 +35,20 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    // Keyboard
+    // Keyboard 
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         textField.text = "The address is \(textField.text!)"
         return false
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.text = ""
+    }
+    
+    
+
     
     /*
     // MARK: - Navigation
