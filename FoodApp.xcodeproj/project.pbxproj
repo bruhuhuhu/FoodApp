@@ -13,6 +13,8 @@
 		54859313200DF792004B46DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54859311200DF792004B46DA /* LaunchScreen.storyboard */; };
 		5485931E200DFC06004B46DA /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5485931D200DFC06004B46DA /* MainView.swift */; };
 		54859320200DFC1C004B46DA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5485931F200DFC1C004B46DA /* MainViewController.swift */; };
+		54F1379A200F50D700C62C99 /* DeliveryAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F13799200F50D700C62C99 /* DeliveryAddressViewController.swift */; };
+		54F1379C200F510700C62C99 /* DeliveryAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F1379B200F510700C62C99 /* DeliveryAddressView.swift */; };
 		873C8978EF0F0D89C4608EA7 /* Pods_FoodApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90CF482804352CA0A98945AE /* Pods_FoodApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +28,8 @@
 		54859314200DF792004B46DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5485931D200DFC06004B46DA /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		5485931F200DFC1C004B46DA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		54F13799200F50D700C62C99 /* DeliveryAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryAddressViewController.swift; sourceTree = "<group>"; };
+		54F1379B200F510700C62C99 /* DeliveryAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryAddressView.swift; sourceTree = "<group>"; };
 		60E6400D9588E09535F10AED /* Pods-FoodApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FoodApp/Pods-FoodApp.debug.xcconfig"; sourceTree = "<group>"; };
 		90CF482804352CA0A98945AE /* Pods_FoodApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -95,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				5485931D200DFC06004B46DA /* MainView.swift */,
+				54F1379B200F510700C62C99 /* DeliveryAddressView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -103,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				5485931F200DFC1C004B46DA /* MainViewController.swift */,
+				54F13799200F50D700C62C99 /* DeliveryAddressViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -251,6 +257,8 @@
 				5485931E200DFC06004B46DA /* MainView.swift in Sources */,
 				54859309200DF792004B46DA /* AppDelegate.swift in Sources */,
 				54859320200DFC1C004B46DA /* MainViewController.swift in Sources */,
+				54F1379A200F50D700C62C99 /* DeliveryAddressViewController.swift in Sources */,
+				54F1379C200F510700C62C99 /* DeliveryAddressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
