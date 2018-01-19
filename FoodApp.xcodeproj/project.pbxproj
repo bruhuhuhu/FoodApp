@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5457EA1C2011FD6600E4A3E7 /* PartnerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457EA1B2011FD6600E4A3E7 /* PartnerListViewController.swift */; };
+		5457EA1E2011FF1300E4A3E7 /* FoodSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457EA1D2011FF1300E4A3E7 /* FoodSelectionViewController.swift */; };
+		5457EA202011FFB800E4A3E7 /* OrderConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457EA1F2011FFB800E4A3E7 /* OrderConfirmationViewController.swift */; };
+		5457EA242011FFFD00E4A3E7 /* PartnerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457EA232011FFFD00E4A3E7 /* PartnerListView.swift */; };
+		5457EA262012001600E4A3E7 /* FoodSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457EA252012001600E4A3E7 /* FoodSelectionView.swift */; };
+		5457EA282012004700E4A3E7 /* OrderConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457EA272012004700E4A3E7 /* OrderConfirmationView.swift */; };
 		54859309200DF792004B46DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54859308200DF792004B46DA /* AppDelegate.swift */; };
 		5485930E200DF792004B46DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5485930C200DF792004B46DA /* Main.storyboard */; };
 		54859310200DF792004B46DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5485930F200DF792004B46DA /* Assets.xcassets */; };
@@ -21,6 +27,12 @@
 /* Begin PBXFileReference section */
 		110B76B47D2B594AB4ADE16A /* Pods-FoodApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodApp/Pods-FoodApp.release.xcconfig"; sourceTree = "<group>"; };
 		5457EA192011FB2200E4A3E7 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		5457EA1B2011FD6600E4A3E7 /* PartnerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerListViewController.swift; sourceTree = "<group>"; };
+		5457EA1D2011FF1300E4A3E7 /* FoodSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSelectionViewController.swift; sourceTree = "<group>"; };
+		5457EA1F2011FFB800E4A3E7 /* OrderConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmationViewController.swift; sourceTree = "<group>"; };
+		5457EA232011FFFD00E4A3E7 /* PartnerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerListView.swift; sourceTree = "<group>"; };
+		5457EA252012001600E4A3E7 /* FoodSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSelectionView.swift; sourceTree = "<group>"; };
+		5457EA272012004700E4A3E7 /* OrderConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmationView.swift; sourceTree = "<group>"; };
 		54859305200DF792004B46DA /* FoodApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54859308200DF792004B46DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5485930D200DF792004B46DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -101,6 +113,9 @@
 			children = (
 				5485931D200DFC06004B46DA /* MainView.swift */,
 				54F1379B200F510700C62C99 /* DeliveryAddressView.swift */,
+				5457EA232011FFFD00E4A3E7 /* PartnerListView.swift */,
+				5457EA252012001600E4A3E7 /* FoodSelectionView.swift */,
+				5457EA272012004700E4A3E7 /* OrderConfirmationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -110,6 +125,9 @@
 			children = (
 				5485931F200DFC1C004B46DA /* MainViewController.swift */,
 				54F13799200F50D700C62C99 /* DeliveryAddressViewController.swift */,
+				5457EA1B2011FD6600E4A3E7 /* PartnerListViewController.swift */,
+				5457EA1D2011FF1300E4A3E7 /* FoodSelectionViewController.swift */,
+				5457EA1F2011FFB800E4A3E7 /* OrderConfirmationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -257,10 +275,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				5485931E200DFC06004B46DA /* MainView.swift in Sources */,
+				5457EA1E2011FF1300E4A3E7 /* FoodSelectionViewController.swift in Sources */,
+				5457EA282012004700E4A3E7 /* OrderConfirmationView.swift in Sources */,
 				54859309200DF792004B46DA /* AppDelegate.swift in Sources */,
 				54859320200DFC1C004B46DA /* MainViewController.swift in Sources */,
+				5457EA202011FFB800E4A3E7 /* OrderConfirmationViewController.swift in Sources */,
+				5457EA262012001600E4A3E7 /* FoodSelectionView.swift in Sources */,
+				5457EA1C2011FD6600E4A3E7 /* PartnerListViewController.swift in Sources */,
 				54F1379A200F50D700C62C99 /* DeliveryAddressViewController.swift in Sources */,
 				54F1379C200F510700C62C99 /* DeliveryAddressView.swift in Sources */,
+				5457EA242011FFFD00E4A3E7 /* PartnerListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
