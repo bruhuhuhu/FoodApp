@@ -15,6 +15,19 @@ class MainView: UIView, UITableViewDelegate, UITableViewDataSource {
     //----------------------------------------------------//
     // MARK: Define the UI elements
     
+    // navi bar
+    
+    var naviBar : UINavigationBar! = {
+        
+        //let nav = UINavigationController (rootViewController: deliveryVC)
+        let naviBar = UINavigationBar()
+        let navItem = UINavigationItem();
+        let backBtn = UIBarButtonItem (barButtonSystemItem: .stop, target: self, action: nil)
+        navItem.leftBarButtonItem = backBtn
+        naviBar.setItems([navItem], animated: false);
+        return naviBar
+    }()
+    
     // labels
     let takeAwayLabel: UILabel! = {
         let label = UILabel()
@@ -56,14 +69,6 @@ class MainView: UIView, UITableViewDelegate, UITableViewDataSource {
         return textField
     }()
     
-    // buttons
-    let backButton: UIButton! = {
-        let button = UIButton()
-        button.addTarget(self, action: Selector(("backButtonPressed")), for: .touchDown)
-        button.setTitle("<", for: .normal)
-        
-        return button
-    }()
     
     let expandButton: UIButton! = {
         let button = UIButton()
@@ -75,7 +80,9 @@ class MainView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     // table view
     
-    var addressArray: NSArray = ["Current Location","Past Location 1", "Past Location 2"]
+    var addressArray = ["Current Location","Past Location 1"]
+    let cellHeight = 50
+  
     var addressTableView = UITableView()
 
     
@@ -84,16 +91,17 @@ class MainView: UIView, UITableViewDelegate, UITableViewDataSource {
     // MARK: init
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.addSubview(naviBar)
         self.addSubview(takeAwayLabel)
         self.addSubview(takeAwaySubLabel)
         self.addSubview(partnerLabel)
         self.addSubview(addressTextField)
-        self.addSubview(backButton)
         self.addSubview(expandButton)
 
         
         //tableview setup
         addressTableView.rowHeight = 50
+        
         self.addSubview(addressTableView)
 
         addressTableView.delegate = self
@@ -109,11 +117,11 @@ class MainView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     override func updateConstraints() {
         if(shouldSetupConstraints) {
+        naviBarConstraint()
         addressTextFieldConstraints()
         takeAwayLabelConstraints ()
         takeAwaySubLabelConstraints()
         addressTableViewConstraints()
-        backButtonConstraints()
         expandButtonConstraints()
         partnerLabelConstraints()
         }
@@ -123,15 +131,16 @@ class MainView: UIView, UITableViewDelegate, UITableViewDataSource {
     //----------------------------------------------------//
     // MARK: Constraints
     
-    // buttons
-    func backButtonConstraints (){
-        constrain(backButton, self){backBtn, view in
-            backBtn.width == 13
-            backBtn.height == 21
-            backBtn.top == view.top + 32
-            backBtn.left == view.left + 16
+    // navi bar
+    func naviBarConstraint (){
+        constrain (naviBar, self) { navi, view in
+            navi.width == view.width
+            navi.height == 65
+            navi.top == view.top
+            navi.centerX == view.centerX
         }
     }
+
 
     func expandButtonConstraints (){
         constrain(expandButton, self){backBtn, view in
@@ -183,8 +192,10 @@ class MainView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     // table view
     func addressTableViewConstraints(){
-
+    
         constrain(addressTableView, addressTextField) { addressTV, addressTF in
+            
+//          let tableViewHeight = CGFloat(addressArray.count * cellHeight)
             
             addressTV.width == addressTF.width
             addressTV.height == 150

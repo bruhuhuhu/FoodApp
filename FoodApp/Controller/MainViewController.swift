@@ -14,20 +14,6 @@ var mainView: MainView!
 
 class MainViewController: UIViewController, UITextFieldDelegate {
     
-    
-    // Testing - Button
-    let button: UIButton! = {
-        let view = UIButton()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.setTitle("go delivery screen", for: .normal)
-        view.backgroundColor = UIColor.blue
-        return view
-    }()
-    // Testing - Button
-    
-    
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,14 +27,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         
         // Autolayout ---- to be edited for iphone x
         constrain (mainView) { mainView in
-        mainView.edges == inset (mainView.superview!.edges, 0,0,0,0)
-            
-        // Testing - Button
-        view.addSubview(button)
-        button.addTarget(self, action: #selector(pressButton), for: .touchDown)
-            buttonConstraints()
-            updateViewConstraints()
-        // Testing - Button
+        mainView.edges == inset (mainView.superview!.edges, 50,0,0,0)
         }
     }
 
@@ -61,35 +40,40 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     // Keyboard 
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        //dismiss keyboard
         textField.resignFirstResponder()
-        textField.text = "The address is \(textField.text!)"
+        let deliveryAddress = textField.text!
+        
+        //adding new entry into the addressArray
+        mainView.addressArray.append(deliveryAddress)
+        textField.text = "The address is \(deliveryAddress)"
+        
+        //refreshing the view
+        mainView.addressTableView.reloadData()
+        viewDidLayoutSubviews()
+        
+        //change view to second screen after return is clicked
+        let deliveryAddressVC = DeliveryAddressViewController()
+        deliveryAddressVC.addressEntered = deliveryAddress
+        self.present (deliveryAddressVC, animated: true, completion: nil)
+      
         return false
+    }
+    
+    
+    override func viewDidLayoutSubviews() {
+          //refreshes table view after data entry
+          mainView.updateConstraints()
+          mainView.addressTableView.beginUpdates()
+          mainView.addressTableView.setNeedsDisplay()
+          mainView.addressTableView.endUpdates()
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text = ""
     }
     
-    
-    
-    // Testing - Button
-    func buttonConstraints(){
-        constrain(button, view) {button, view in
-            button.bottom == view.bottom - 40
-            button.centerX == view.centerX
-        }
-        
-    }
-
-    
-   @objc func pressButton(_sender: UIButton!){
-    print ("To Delivery")
-    let deliveryAddressVC = DeliveryAddressViewController()
-//  self.navigationController?.pushViewController(deliveryAddressVC, animated: true)
-//  print ("done 1")
-    self.present (deliveryAddressVC, animated: true, completion: nil)
-    }
-    // Testing - Button
 
 
 }

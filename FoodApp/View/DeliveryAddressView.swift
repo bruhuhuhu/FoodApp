@@ -36,6 +36,7 @@ class DeliveryAddressView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     var addressArray: NSArray = ["Current Location","Past Location 1", "Past Location 2"]
     var addressTableView = UITableView()
+    let cellHeight = 50
     
     // text field
     let addressTextField: UITextField! = {
@@ -77,6 +78,7 @@ class DeliveryAddressView: UIView, UITableViewDelegate, UITableViewDataSource {
         if(shouldSetupConstraints) {
            naviBarConstraint()
            addressTextFieldConstraints()
+           addressTableViewConstraints()
         }
         super.updateConstraints()
     }
@@ -106,19 +108,18 @@ class DeliveryAddressView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     // table view
+
     func addressTableViewConstraints(){
-        
+        let tableViewHight = CGFloat(addressArray.count * cellHeight)
         constrain(addressTableView, addressTextField) { addressTV, addressTF in
             addressTV.width == addressTF.width
-            addressTV.height == 40
             addressTV.centerX == addressTF.superview!.centerX
+            addressTV.height == tableViewHight
             addressTV.top == addressTF.bottom
         }
         
     }
     
-    
-
     
     //----------------------------------------------------//
     // MARK: Screen dismiss setup

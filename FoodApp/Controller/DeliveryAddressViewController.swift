@@ -14,20 +14,25 @@ var deliveryAddressView: DeliveryAddressView!
 
 class DeliveryAddressViewController: UIViewController, UITextFieldDelegate {
     
-
+    
+    var addressEntered: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         deliveryAddressView = DeliveryAddressView(frame: CGRect.zero)
+        deliveryAddressView.addressTextField.text = addressEntered
         self.view.addSubview(deliveryAddressView)
-        mainView.addressTextField.delegate = self
+        deliveryAddressView.addressTextField.delegate = self
         
         // Background
         self.view.backgroundColor = UIColor.lightGray
         
         // Autolayout ---- to be edited for iphone x
         constrain (deliveryAddressView) { deliveryAddressView in
-            deliveryAddressView.edges == inset (deliveryAddressView.superview!.edges, 0,0,0,0)
+        deliveryAddressView.edges == inset (deliveryAddressView.superview!.edges, 50,0,0,0)
             
             
         }
