@@ -7,11 +7,31 @@
 //
 
 import UIKit
+import Cartography
+
+var foodSelectionView: FoodSelectionView!
 
 class FoodSelectionViewController: UIViewController {
 
+
+
+var deliveryAddressEntered: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.green
+ 
+    foodSelectionView = FoodSelectionView(frame: CGRect.zero)
+    
+        self.navigationItem.title = deliveryAddressEntered
+        self.view.addSubview(foodSelectionView)
+        foodSelectionView.deliveryAddressEntered = deliveryAddressEntered
+        
+
+        
+        constrain (foodSelectionView) { foodSelectionView in
+            foodSelectionView.edges == inset (foodSelectionView.superview!.edges, 50,0,0,0)
+        }
 
         // Do any additional setup after loading the view.
     }
@@ -20,16 +40,6 @@ class FoodSelectionViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

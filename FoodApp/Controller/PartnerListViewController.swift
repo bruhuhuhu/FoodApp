@@ -7,11 +7,24 @@
 //
 
 import UIKit
+import Cartography
+
+var partnerListView : PartnerListView!
+
 
 class PartnerListViewController: UIViewController {
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+         self.view.backgroundColor = UIColor.purple
+        
+        partnerListView = PartnerListView(frame: CGRect.zero)
+        
+        self.view.addSubview(partnerListView)
+        constrain (partnerListView) { partnerListView in
+            partnerListView.edges == inset (partnerListView.superview!.edges, 50,0,0,0)
+        }
 
         // Do any additional setup after loading the view.
     }
@@ -21,15 +34,4 @@ class PartnerListViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

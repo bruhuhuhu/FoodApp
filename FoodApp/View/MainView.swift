@@ -9,7 +9,17 @@
 import UIKit
 import Cartography
 
+
+protocol MainViewDelegate : NSObjectProtocol {
+    func partnerListButtonSwitch()
+    func deliveryAddressButtonSwitch()
+    func deliveryAddressSwitch(deliveryAddress: String)
+}
+
+
 class MainView: UIView, UITableViewDelegate, UITableViewDataSource {
+    
+    weak var mainViewDelegate: MainViewDelegate?
     
     var shouldSetupConstraints = true
     //----------------------------------------------------//
@@ -56,23 +66,24 @@ class MainView: UIView, UITableViewDelegate, UITableViewDataSource {
         return label
     }()
     
+
     
-    // text field
-    let addressTextField: UITextField! = {
-        let textField = UITextField()
-        textField.backgroundColor = UIColor.white
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.textAlignment = .center
-        textField.text = "Enter Delivery Address"
-        textField.font = .systemFont(ofSize: 15)
+    // button
+    
+    let deliveryAddressButton: UIButton! = {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(deliveryAddressButtonSwitch), for: .touchDown)
+        button.setTitle("Enter Delivery Address", for: .normal)
+        button.backgroundColor = UIColor.black
         
-        return textField
+        return button
+        
     }()
     
     
-    let expandButton: UIButton! = {
+    let partnerListButton: UIButton! = {
         let button = UIButton()
-        button.addTarget(self, action: Selector(("expandButtonPressed")), for: .touchDown)
+        button.addTarget(self, action: #selector(partnerListButtonSwitch), for: .touchDown)
         button.setTitle("v", for: .normal)
         
         return button
@@ -80,10 +91,10 @@ class MainView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     // table view
     
-    var addressArray = ["Current Location","Past Location 1"]
+    var deliveryAddressArray = ["Current Location","Past Location 1"]
     let cellHeight = 50
   
-    var addressTableView = UITableView()
+    var deliveryAddressTableView = UITableView()
 
     
     
@@ -95,18 +106,19 @@ class MainView: UIView, UITableViewDelegate, UITableViewDataSource {
         self.addSubview(takeAwayLabel)
         self.addSubview(takeAwaySubLabel)
         self.addSubview(partnerLabel)
-        self.addSubview(addressTextField)
-        self.addSubview(expandButton)
+        //self.addSubview(deliveryAddressTextField)
+        self.addSubview(partnerListButton)
+        self.addSubview(deliveryAddressButton)
 
         
         //tableview setup
-        addressTableView.rowHeight = 50
+        deliveryAddressTableView.rowHeight = 50
         
-        self.addSubview(addressTableView)
+        self.addSubview(deliveryAddressTableView)
 
-        addressTableView.delegate = self
-        addressTableView.dataSource = self
-        addressTableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
+        deliveryAddressTableView.delegate = self
+        deliveryAddressTableView.dataSource = self
+        deliveryAddressTableView.register(UITableViewCell.self, forCellReuseIdentifier: "deliveryAddressCell")
 
         
     }
@@ -118,12 +130,12 @@ class MainView: UIView, UITableViewDelegate, UITableViewDataSource {
     override func updateConstraints() {
         if(shouldSetupConstraints) {
         naviBarConstraint()
-        addressTextFieldConstraints()
         takeAwayLabelConstraints ()
         takeAwaySubLabelConstraints()
-        addressTableViewConstraints()
-        expandButtonConstraints()
+        deliveryAddressTableViewConstraints()
+        partnerListButtonConstraints()
         partnerLabelConstraints()
+        deliveryAddressButtonConstraints()
         }
         super.updateConstraints()
     }
@@ -140,14 +152,25 @@ class MainView: UIView, UITableViewDelegate, UITableViewDataSource {
             navi.centerX == view.centerX
         }
     }
+    
+    // button
+    
+    func deliveryAddressButtonConstraints() {
+        constrain(deliveryAddressButton,takeAwaySubLabel){ deliveryAddressBtn, subLabel in
+            deliveryAddressBtn.width == 359
+            deliveryAddressBtn.height == 48
+            deliveryAddressBtn.centerX == subLabel.superview!.centerX
+            deliveryAddressBtn.top == subLabel.bottom + 129
+        }
+    }
 
-
-    func expandButtonConstraints (){
-        constrain(expandButton, self){backBtn, view in
-            backBtn.width == 24
-            backBtn.height == 24
-            backBtn.bottom == view.bottom - 72
-            backBtn.centerX == view.centerX
+    func partnerListButtonConstraints (){
+        constrain(partnerListButton, self){partnerListBtn, view in
+            partnerListBtn.width == 24
+            partnerListBtn.height == 24
+            partnerListBtn.bottom == view.bottom - 72
+            partnerListBtn.centerX == view.centerX
+            partnerListButton.backgroundColor = UIColor.blue
         }
     }
     
@@ -172,35 +195,25 @@ class MainView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func partnerLabelConstraints (){
-        constrain(partnerLabel,expandButton){partnerLabel, expandBtn in
+        constrain(partnerLabel,partnerListButton){partnerLabel, partnerListBtn in
             partnerLabel.width == 237
             partnerLabel.height == 14
-            partnerLabel.centerX == expandBtn.superview!.centerX
-            partnerLabel.top == expandBtn.bottom + 8
+            partnerLabel.centerX == partnerListBtn.superview!.centerX
+            partnerLabel.top == partnerListBtn.bottom + 8
         }
     }
-    
-    // text field
-    func addressTextFieldConstraints() {
-        constrain(addressTextField,takeAwaySubLabel){ addressTF, subLabel in
-            addressTF.width == 359
-            addressTF.height == 48
-            addressTF.centerX == subLabel.superview!.centerX
-            addressTF.top == subLabel.bottom + 129
-        }
-    }
-    
+
     // table view
-    func addressTableViewConstraints(){
+    func deliveryAddressTableViewConstraints(){
     
-        constrain(addressTableView, addressTextField) { addressTV, addressTF in
+        constrain(deliveryAddressTableView, deliveryAddressButton) { deliveryAddressTV, deliveryAddressBtn in
             
-//          let tableViewHeight = CGFloat(addressArray.count * cellHeight)
+//          let tableViewHeight = CGFloat(deliveryAddressArray.count * cellHeight)
             
-            addressTV.width == addressTF.width
-            addressTV.height == 150
-            addressTV.centerX == addressTF.superview!.centerX
-            addressTV.top == addressTF.bottom + 4
+            deliveryAddressTV.width == deliveryAddressBtn.width
+            deliveryAddressTV.height == 150
+            deliveryAddressTV.centerX == deliveryAddressBtn.superview!.centerX
+            deliveryAddressTV.top == deliveryAddressBtn.bottom + 4
         }
         
     }
@@ -211,17 +224,37 @@ class MainView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Num: \(indexPath.row)")
-        print("Value: \(addressArray[indexPath.row])")
+        let deliveryAddressCell = tableView.dequeueReusableCell(withIdentifier: "deliveryAddressCell", for: indexPath as IndexPath)
+
+        let deliveryAddressSelected = deliveryAddressArray[indexPath.row]
+        deliveryAddressSwitch(_sender: deliveryAddressCell, deliveryAddress: deliveryAddressSelected)
+        print("Value: \(deliveryAddressArray[indexPath.row])")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return addressArray.count
+        return deliveryAddressArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
-        cell.textLabel!.text = "\(addressArray[indexPath.row])"
-        return cell
+        let deliveryAddressCell = tableView.dequeueReusableCell(withIdentifier: "deliveryAddressCell", for: indexPath as IndexPath)
+        deliveryAddressCell.textLabel!.text = "\(deliveryAddressArray[indexPath.row])"
+        return deliveryAddressCell
     }
     
+    //----------------------------------------------------//
+    // MARK: Page change setup
+    
+    @objc func partnerListButtonSwitch(_sender: UIButton!) {
+        mainViewDelegate?.partnerListButtonSwitch()
+    }
+    
+    @objc func deliveryAddressButtonSwitch(_sender: UIButton){
+        mainViewDelegate?.deliveryAddressButtonSwitch()
+        
+    }
+    
+    @objc func deliveryAddressSwitch (_sender: UITableViewCell! ,deliveryAddress: String) {
+        mainViewDelegate?.deliveryAddressSwitch(deliveryAddress: deliveryAddress)
+    }
 }
+

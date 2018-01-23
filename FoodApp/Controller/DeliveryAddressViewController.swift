@@ -12,29 +12,27 @@ import Cartography
 var deliveryAddressView: DeliveryAddressView!
 
 
-class DeliveryAddressViewController: UIViewController, UITextFieldDelegate {
+class DeliveryAddressViewController: UIViewController, UITextFieldDelegate,DeliveryAddressViewDelegate {
     
     
-    var addressEntered: String = ""
+    var deliveryAddressEntered: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         deliveryAddressView = DeliveryAddressView(frame: CGRect.zero)
-        deliveryAddressView.addressTextField.text = addressEntered
-        self.view.addSubview(deliveryAddressView)
-        deliveryAddressView.addressTextField.delegate = self
+        deliveryAddressView.deliveryAddressTextField.text = deliveryAddressEntered
+        deliveryAddressView.deliveryAddressTextField.delegate = self
+        
+        deliveryAddressView.deliveryAddressViewDelegate = self
         
         // Background
         self.view.backgroundColor = UIColor.lightGray
         
         // Autolayout ---- to be edited for iphone x
+        self.view.addSubview(deliveryAddressView)
         constrain (deliveryAddressView) { deliveryAddressView in
         deliveryAddressView.edges == inset (deliveryAddressView.superview!.edges, 50,0,0,0)
-            
-            
         }
     }
     override func didReceiveMemoryWarning() {
@@ -46,23 +44,47 @@ class DeliveryAddressViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        textField.text = "The address is \(textField.text!)"
+        let deliveryAddress = textField.text!
+        mainView.deliveryAddressArray.append(deliveryAddress)
+        
+        //refreshing the view
+        
+        deliveryAddressView.deliveryAddressTableView.reloadData()
+        mainView.deliveryAddressTableView.reloadData()
+        viewDidLayoutSubviews()
+        
+        //change view to second screen after return is clicked
+        let foodSelectionVC = FoodSelectionViewController()
+        foodSelectionVC.deliveryAddressEntered = deliveryAddress
+        self.present (foodSelectionVC, animated: true, completion: nil)
+        
+        
+        textField.text = "\(textField.text!)"
         return false
+    }
+    
+    override func viewDidLayoutSubviews() {
+        //refreshes table view after data entry
+        deliveryAddressView.updateConstraints()
+        deliveryAddressView.deliveryAddressTableView.beginUpdates()
+        deliveryAddressView.deliveryAddressTableView.setNeedsDisplay()
+        deliveryAddressView.deliveryAddressTableView.endUpdates()
+        
+        mainView.updateConstraints()
+        mainView.deliveryAddressTableView.beginUpdates()
+        mainView.deliveryAddressTableView.setNeedsDisplay()
+        mainView.deliveryAddressTableView.endUpdates()
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text = ""
     }
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func foodSelectionSwitch(deliveryAddress: String) {
+        let foodSelectionVC = FoodSelectionViewController()
+        foodSelectionVC.deliveryAddressEntered = deliveryAddress
+        self.present (foodSelectionVC, animated: true, completion: nil)
     }
-    */
+    
 
 }

@@ -1,14 +1,14 @@
 //
-//  FoodSelectionView.swift
+//  FoodSelectionFilterView.swift
 //  FoodApp
 //
-//  Created by hu tsun hao on 19/1/18.
+//  Created by hu tsun hao on 23/1/18.
 //  Copyright © 2018 hu tsun hao. All rights reserved.
 //
 
 import UIKit
 
-class FoodSelectionView: UIView {
+class FoodSelectionFilterView: UIView {
 
     /*
     // Only override draw() if you perform custom drawing.

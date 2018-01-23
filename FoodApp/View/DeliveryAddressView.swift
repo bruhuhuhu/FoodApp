@@ -9,11 +9,17 @@
 import UIKit
 import Cartography
 
-let deliveryVC = DeliveryAddressViewController()
+protocol DeliveryAddressViewDelegate: NSObjectProtocol {
+    func foodSelectionSwitch(deliveryAddress: String)
+}
+
+let deliveryAddressVC = DeliveryAddressViewController()
 
 class DeliveryAddressView: UIView, UITableViewDelegate, UITableViewDataSource {
     
+    weak var deliveryAddressViewDelegate: DeliveryAddressViewDelegate?
     
+    var deliveryAddressEntered: String = ""
     
     var shouldSetupConstraints = true
     //----------------------------------------------------//
@@ -34,17 +40,18 @@ class DeliveryAddressView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     // table view
     
-    var addressArray: NSArray = ["Current Location","Past Location 1", "Past Location 2"]
-    var addressTableView = UITableView()
+    var deliveryAddressArray = ["Current Location","Past Location 1", "Past Location 2"]
+    var deliveryAddressTableView = UITableView()
     let cellHeight = 50
     
     // text field
-    let addressTextField: UITextField! = {
+    let deliveryAddressTextField: UITextField! = {
         let textField = UITextField()
+        textField.placeholder = "Enter Delivery Address"
         textField.backgroundColor = UIColor.white
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.textAlignment = .center
-        textField.text = "Enter Delivery Address"
+        textField.text = ""
         textField.font = .systemFont(ofSize: 15)
         
         return textField
@@ -57,15 +64,15 @@ class DeliveryAddressView: UIView, UITableViewDelegate, UITableViewDataSource {
         super.init(frame: frame)
 
         self.addSubview(naviBar)
-        self.addSubview(addressTextField)
+        self.addSubview(deliveryAddressTextField)
         
         //tableview setup
-        addressTableView.rowHeight = 50
-        self.addSubview(addressTableView)
+        deliveryAddressTableView.rowHeight = 50
+        self.addSubview(deliveryAddressTableView)
         
-        addressTableView.delegate = self
-        addressTableView.dataSource = self
-        addressTableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
+        deliveryAddressTableView.delegate = self
+        deliveryAddressTableView.dataSource = mainView
+        deliveryAddressTableView.register(UITableViewCell.self, forCellReuseIdentifier: "deliveryAddressCell")
 
         
     }
@@ -77,8 +84,8 @@ class DeliveryAddressView: UIView, UITableViewDelegate, UITableViewDataSource {
     override func updateConstraints() {
         if(shouldSetupConstraints) {
            naviBarConstraint()
-           addressTextFieldConstraints()
-           addressTableViewConstraints()
+           deliveryAddressTextFieldConstraints()
+           deliveryAddressTableViewConstraints()
         }
         super.updateConstraints()
     }
@@ -98,24 +105,25 @@ class DeliveryAddressView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     // text field
-    func addressTextFieldConstraints() {
-        constrain(addressTextField,naviBar){ addressTF, naviBar in
-            addressTF.width == naviBar.width
-            addressTF.height == 40
-            addressTF.centerX == naviBar.superview!.centerX
-            addressTF.top == naviBar.bottom
+    func deliveryAddressTextFieldConstraints() {
+        constrain(deliveryAddressTextField,naviBar){ deliveryAddressTF, naviBar in
+            deliveryAddressTF.width == naviBar.width
+            deliveryAddressTF.height == 40
+            deliveryAddressTF.centerX == naviBar.superview!.centerX
+            deliveryAddressTF.top == naviBar.bottom - 25
         }
     }
     
     // table view
 
-    func addressTableViewConstraints(){
-        let tableViewHight = CGFloat(addressArray.count * cellHeight)
-        constrain(addressTableView, addressTextField) { addressTV, addressTF in
-            addressTV.width == addressTF.width
-            addressTV.centerX == addressTF.superview!.centerX
-            addressTV.height == tableViewHight
-            addressTV.top == addressTF.bottom
+    func deliveryAddressTableViewConstraints(){
+                deliveryAddressTableView.backgroundColor = UIColor.blue
+        let tableViewHight = CGFloat(deliveryAddressArray.count * cellHeight)
+        constrain(deliveryAddressTableView, deliveryAddressTextField) { deliveryAddressTV, deliveryAddressTF in
+            deliveryAddressTV.width == deliveryAddressTF.width
+            deliveryAddressTV.centerX == deliveryAddressTF.superview!.centerX
+            deliveryAddressTV.height == tableViewHight
+            deliveryAddressTV.top == deliveryAddressTF.bottom
         }
         
     }
@@ -146,18 +154,30 @@ class DeliveryAddressView: UIView, UITableViewDelegate, UITableViewDataSource {
     // MARK: TableView setup
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let deliveryAddressCell = tableView.dequeueReusableCell(withIdentifier: "deliveryAddressCell", for: indexPath as IndexPath)
         print("Num: \(indexPath.row)")
-        print("Value: \(addressArray[indexPath.row])")
+        
+        let deliveryAddressSelected = deliveryAddressArray[indexPath.row]
+        foodSelectionSwitch(_sender: deliveryAddressCell, deliveryAddress: deliveryAddressSelected)
+        print("Value: \(deliveryAddressArray[indexPath.row])")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return addressArray.count
+        return deliveryAddressArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
-        cell.textLabel!.text = "\(addressArray[indexPath.row])"
-        return cell
+        let deliveryAddressCell = tableView.dequeueReusableCell(withIdentifier: "deliveryAddressCell", for: indexPath as IndexPath)
+        deliveryAddressCell.textLabel!.text = "\(deliveryAddressArray[indexPath.row])"
+        return deliveryAddressCell
     }
+    
+    //----------------------------------------------------//
+    // MARK: Page change setup
+    
+    @objc func foodSelectionSwitch (_sender: UITableViewCell! ,deliveryAddress: String) {
+        deliveryAddressViewDelegate?.foodSelectionSwitch(deliveryAddress: deliveryAddress)
+    }
+    
 
 }

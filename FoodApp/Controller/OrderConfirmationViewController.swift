@@ -7,11 +7,19 @@
 //
 
 import UIKit
+import Cartography
+
+var orderConfirmationView: OrderConfirmationView!
 
 class OrderConfirmationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+         self.view.backgroundColor = UIColor.orange
+        self.view.addSubview(orderConfirmationView)
+        constrain (orderConfirmationView) { orderConfirmationView in
+            orderConfirmationView.edges == inset (orderConfirmationView.superview!.edges, 50,0,0,0)
+        }
 
         // Do any additional setup after loading the view.
     }
