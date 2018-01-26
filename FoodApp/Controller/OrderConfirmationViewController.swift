@@ -17,10 +17,27 @@ class OrderConfirmationViewController: UIViewController {
         super.viewDidLoad()
          self.view.backgroundColor = UIColor.orange
         self.view.addSubview(orderConfirmationView)
+        // Autolayout ---- to be edited for iphone x
+        self.view.addSubview(orderConfirmationView)
         constrain (orderConfirmationView) { orderConfirmationView in
-            orderConfirmationView.edges == inset (orderConfirmationView.superview!.edges, 50,0,0,0)
+            orderConfirmationView.left == orderConfirmationView.superview!.left
+            orderConfirmationView.right == orderConfirmationView.superview!.right
         }
-
+        
+        if #available(iOS 11, *) {
+            let guide = view.safeAreaLayoutGuide
+            NSLayoutConstraint.activate([
+                orderConfirmationView.topAnchor.constraintEqualToSystemSpacingBelow(guide.topAnchor, multiplier: 1.0), orderConfirmationView.bottomAnchor.constraintEqualToSystemSpacingBelow(guide.bottomAnchor, multiplier: 1.0)
+                ])
+            
+        } else {
+            let standardSpacing: CGFloat = 8.0
+            NSLayoutConstraint.activate([
+                orderConfirmationView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: standardSpacing),
+                bottomLayoutGuide.topAnchor.constraint(equalTo:
+                    orderConfirmationView.bottomAnchor, constant: standardSpacing)
+                ])
+        }
         // Do any additional setup after loading the view.
     }
 

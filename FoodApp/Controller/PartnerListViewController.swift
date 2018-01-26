@@ -21,9 +21,26 @@ class PartnerListViewController: UIViewController {
         
         partnerListView = PartnerListView(frame: CGRect.zero)
         
+        // Autolayout ---- to be edited for iphone x
         self.view.addSubview(partnerListView)
+        // Autolayout ---- to be edited for iphone x
         constrain (partnerListView) { partnerListView in
-            partnerListView.edges == inset (partnerListView.superview!.edges, 50,0,0,0)
+            partnerListView.left == partnerListView.superview!.left
+            partnerListView.right == partnerListView.superview!.right
+        }
+        
+        if #available(iOS 11, *) {
+            let guide = view.safeAreaLayoutGuide
+            NSLayoutConstraint.activate([
+                partnerListView.topAnchor.constraintEqualToSystemSpacingBelow(guide.topAnchor, multiplier: 1.0), partnerListView.bottomAnchor.constraintEqualToSystemSpacingBelow(guide.bottomAnchor, multiplier: 1.0)
+                ])
+            
+        } else {
+            let standardSpacing: CGFloat = 8.0
+            NSLayoutConstraint.activate([
+                partnerListView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: standardSpacing),
+                bottomLayoutGuide.topAnchor.constraint(equalTo: partnerListView.bottomAnchor, constant: standardSpacing)
+                ])
         }
 
         // Do any additional setup after loading the view.

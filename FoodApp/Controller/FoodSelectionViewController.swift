@@ -24,13 +24,28 @@ var deliveryAddressEntered: String = ""
     foodSelectionView = FoodSelectionView(frame: CGRect.zero)
     
         self.navigationItem.title = deliveryAddressEntered
-        self.view.addSubview(foodSelectionView)
+       
         foodSelectionView.deliveryAddressEntered = deliveryAddressEntered
         
-
-        
+        // Autolayout ---- to be edited for iphone x
+        self.view.addSubview(foodSelectionView)
         constrain (foodSelectionView) { foodSelectionView in
-            foodSelectionView.edges == inset (foodSelectionView.superview!.edges, 50,0,0,0)
+            foodSelectionView.left == foodSelectionView.superview!.left
+            foodSelectionView.right == foodSelectionView.superview!.right
+        }
+        
+        if #available(iOS 11, *) {
+            let guide = view.safeAreaLayoutGuide
+            NSLayoutConstraint.activate([
+                foodSelectionView.topAnchor.constraintEqualToSystemSpacingBelow(guide.topAnchor, multiplier: 1.0), foodSelectionView.bottomAnchor.constraintEqualToSystemSpacingBelow(guide.bottomAnchor, multiplier: 1.0)
+                ])
+            
+        } else {
+            let standardSpacing: CGFloat = 8.0
+            NSLayoutConstraint.activate([
+                foodSelectionView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: standardSpacing),
+                bottomLayoutGuide.topAnchor.constraint(equalTo: foodSelectionView.bottomAnchor, constant: standardSpacing)
+                ])
         }
 
         // Do any additional setup after loading the view.

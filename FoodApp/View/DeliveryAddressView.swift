@@ -84,8 +84,8 @@ class DeliveryAddressView: UIView, UITableViewDelegate, UITableViewDataSource {
     override func updateConstraints() {
         if(shouldSetupConstraints) {
            naviBarConstraint()
-           deliveryAddressTextFieldConstraints()
-           deliveryAddressTableViewConstraints()
+           deliveryAddressTextFieldConstraint()
+           deliveryAddressTableViewConstraint()
         }
         super.updateConstraints()
     }
@@ -105,7 +105,7 @@ class DeliveryAddressView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     // text field
-    func deliveryAddressTextFieldConstraints() {
+    func deliveryAddressTextFieldConstraint() {
         constrain(deliveryAddressTextField,naviBar){ deliveryAddressTF, naviBar in
             deliveryAddressTF.width == naviBar.width
             deliveryAddressTF.height == 40
@@ -116,7 +116,7 @@ class DeliveryAddressView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     // table view
 
-    func deliveryAddressTableViewConstraints(){
+    func deliveryAddressTableViewConstraint(){
                 deliveryAddressTableView.backgroundColor = UIColor.blue
         let tableViewHight = CGFloat(deliveryAddressArray.count * cellHeight)
         constrain(deliveryAddressTableView, deliveryAddressTextField) { deliveryAddressTV, deliveryAddressTF in

@@ -29,11 +29,29 @@ class DeliveryAddressViewController: UIViewController, UITextFieldDelegate,Deliv
         // Background
         self.view.backgroundColor = UIColor.lightGray
         
+        
         // Autolayout ---- to be edited for iphone x
         self.view.addSubview(deliveryAddressView)
+        // Autolayout ---- to be edited for iphone x
         constrain (deliveryAddressView) { deliveryAddressView in
-        deliveryAddressView.edges == inset (deliveryAddressView.superview!.edges, 50,0,0,0)
+            deliveryAddressView.left == deliveryAddressView.superview!.left
+            deliveryAddressView.right == deliveryAddressView.superview!.right
         }
+        
+        if #available(iOS 11, *) {
+            let guide = view.safeAreaLayoutGuide
+            NSLayoutConstraint.activate([
+                deliveryAddressView.topAnchor.constraintEqualToSystemSpacingBelow(guide.topAnchor, multiplier: 1.0), deliveryAddressView.bottomAnchor.constraintEqualToSystemSpacingBelow(guide.bottomAnchor, multiplier: 1.0)
+                ])
+            
+        } else {
+            let standardSpacing: CGFloat = 8.0
+            NSLayoutConstraint.activate([
+                deliveryAddressView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: standardSpacing),
+                bottomLayoutGuide.topAnchor.constraint(equalTo: deliveryAddressView.bottomAnchor, constant: standardSpacing)
+                ])
+        }
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

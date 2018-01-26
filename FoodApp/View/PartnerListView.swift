@@ -64,7 +64,7 @@ class PartnerListView: UIView, UITableViewDelegate, UITableViewDataSource {
     override func updateConstraints() {
         if(shouldSetupConstraints) {
             naviBarConstraint()
-            partnerListTableViewConstraints()
+            partnerListTableViewConstraint()
         }
         super.updateConstraints()
     }
@@ -83,7 +83,7 @@ class PartnerListView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     // table view
-    func partnerListTableViewConstraints(){
+    func partnerListTableViewConstraint(){
         
         constrain(partnerListTableView, naviBar) { partnerListTV, naviBar in
 

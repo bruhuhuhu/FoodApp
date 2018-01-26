@@ -29,7 +29,22 @@ class MainViewController: UIViewController, MainViewDelegate {
         
         // Autolayout ---- to be edited for iphone x
         constrain (mainView) { mainView in
-        mainView.edges == inset (mainView.superview!.edges, 50,0,0,0)
+        mainView.left == mainView.superview!.left
+        mainView.right == mainView.superview!.right
+        }
+        
+        if #available(iOS 11, *) {
+            let guide = view.safeAreaLayoutGuide
+            NSLayoutConstraint.activate([
+                mainView.topAnchor.constraintEqualToSystemSpacingBelow(guide.topAnchor, multiplier: 1.0), mainView.bottomAnchor.constraintEqualToSystemSpacingBelow(guide.bottomAnchor, multiplier: 1.0)
+                ])
+            
+        } else {
+            let standardSpacing: CGFloat = 8.0
+            NSLayoutConstraint.activate([
+                mainView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: standardSpacing),
+                bottomLayoutGuide.topAnchor.constraint(equalTo: mainView.bottomAnchor, constant: standardSpacing)
+                ])
         }
     }
 

@@ -130,12 +130,12 @@ class MainView: UIView, UITableViewDelegate, UITableViewDataSource {
     override func updateConstraints() {
         if(shouldSetupConstraints) {
         naviBarConstraint()
-        takeAwayLabelConstraints ()
-        takeAwaySubLabelConstraints()
-        deliveryAddressTableViewConstraints()
-        partnerListButtonConstraints()
-        partnerLabelConstraints()
-        deliveryAddressButtonConstraints()
+        takeAwayLabelConstraint ()
+        takeAwaySubLabelConstraint()
+        deliveryAddressTableViewConstraint()
+        partnerListButtonConstraint()
+        partnerLabelConstraint()
+        deliveryAddressButtonConstraint()
         }
         super.updateConstraints()
     }
@@ -155,7 +155,7 @@ class MainView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     // button
     
-    func deliveryAddressButtonConstraints() {
+    func deliveryAddressButtonConstraint() {
         constrain(deliveryAddressButton,takeAwaySubLabel){ deliveryAddressBtn, subLabel in
             deliveryAddressBtn.width == 359
             deliveryAddressBtn.height == 48
@@ -164,7 +164,7 @@ class MainView: UIView, UITableViewDelegate, UITableViewDataSource {
         }
     }
 
-    func partnerListButtonConstraints (){
+    func partnerListButtonConstraint (){
         constrain(partnerListButton, self){partnerListBtn, view in
             partnerListBtn.width == 24
             partnerListBtn.height == 24
@@ -176,7 +176,7 @@ class MainView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     // labels
     
-    func takeAwayLabelConstraints (){
+    func takeAwayLabelConstraint (){
         constrain(takeAwayLabel, self){label, view in
             label.width == 164
             label.height == 34
@@ -185,7 +185,7 @@ class MainView: UIView, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func takeAwaySubLabelConstraints (){
+    func takeAwaySubLabelConstraint (){
         constrain(takeAwaySubLabel,takeAwayLabel){subLabel, mainLabel in
             subLabel.width == 315
             subLabel.height == 16
@@ -194,7 +194,7 @@ class MainView: UIView, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func partnerLabelConstraints (){
+    func partnerLabelConstraint (){
         constrain(partnerLabel,partnerListButton){partnerLabel, partnerListBtn in
             partnerLabel.width == 237
             partnerLabel.height == 14
@@ -204,7 +204,7 @@ class MainView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
 
     // table view
-    func deliveryAddressTableViewConstraints(){
+    func deliveryAddressTableViewConstraint(){
     
         constrain(deliveryAddressTableView, deliveryAddressButton) { deliveryAddressTV, deliveryAddressBtn in
             

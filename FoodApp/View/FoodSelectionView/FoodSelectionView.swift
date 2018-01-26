@@ -11,7 +11,9 @@ import Cartography
 let foodSelectionVC = FoodSelectionViewController()
 
 
-class FoodSelectionView: UIView, UITableViewDelegate, UITableViewDataSource {
+
+class FoodSelectionView: UIView, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+
     
     var shouldSetupConstraints = true
     var deliveryAddressEntered : String = ""
@@ -57,18 +59,47 @@ class FoodSelectionView: UIView, UITableViewDelegate, UITableViewDataSource {
     var foodSelectionTableView = UITableView()
     let cellHeight = 124
     
-    // page view
+
+    // collection view
+    let noticeCollectionViewLayout = UICollectionViewFlowLayout.init()
+    var noticeCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout:UICollectionViewFlowLayout.init())
+    var noticeArray = ["this is page 1", "this is page 2", "this is page 3"]
+    
+    // page views
+//    var pages = [UILabel()]
+//
+//    var page : UILabel! = {
+//        let page = UILabel()
+//        page.text = "this is a page"
+//        page.textColor = UIColor.gray
+//        page.textAlignment = .center
+//        page.font = .systemFont(ofSize: 28)
+//        return page
+//    }()
+    
+
     
     
     //----------------------------------------------------//
     // MARK: init
     override init(frame: CGRect) {
         super.init(frame: frame)
+        noticeCollectionViewLayout.scrollDirection = UICollectionViewScrollDirection.horizontal
+        noticeCollectionView.isPagingEnabled = true
+        noticeCollectionView.setCollectionViewLayout(noticeCollectionViewLayout, animated: true)
 
+        noticeCollectionView.delegate = self
+        noticeCollectionView.dataSource = self
+        noticeCollectionView.register(FoodSelectionNoticeCell.self, forCellWithReuseIdentifier: "pages")
+        
+        
+        self.addSubview(noticeCollectionView)
+        
+        
         self.addSubview(naviBar)
         self.addSubview(foodSelectionTableView)
         self.addSubview(filterBar)
-        
+        //self.addSubview(page)
         foodSelectionTableView.delegate = self
         foodSelectionTableView.dataSource = self
         foodSelectionTableView.register(UITableViewCell.self, forCellReuseIdentifier: "partnerListCell")
@@ -82,8 +113,10 @@ class FoodSelectionView: UIView, UITableViewDelegate, UITableViewDataSource {
     override func updateConstraints() {
         if(shouldSetupConstraints) {
             naviBarConstraint()
-            foodSelectionTableViewConstraints()
+            foodSelectionTableViewConstraint()
             filterBarConstraint()
+            noticeCollectionViewConstraint()
+            //pageConstraint()
         }
         super.updateConstraints()
     }
@@ -117,20 +150,30 @@ class FoodSelectionView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     
     // table view
-    func foodSelectionTableViewConstraints(){
+    func foodSelectionTableViewConstraint(){
         
-        constrain(foodSelectionTableView, filterBar) { foodSelectionTV, filterBar in
+        constrain(foodSelectionTableView, noticeCollectionView) { foodSelectionTV, filterBar in
             
             foodSelectionTV.width == filterBar.width
             foodSelectionTV.bottom == (filterBar.superview?.bottom)! - 20
-            foodSelectionTV.height == 500
+            foodSelectionTV.height == 300
             foodSelectionTV.centerX == filterBar.superview!.centerX
             foodSelectionTV.top == filterBar.bottom + 4
         }
         
     }
     
+    //collection view
     
+    func noticeCollectionViewConstraint(){
+        //noticeCollectionView.backgroundColor = UIColor.orange
+        constrain (noticeCollectionView, filterBar){ noticeCV, filterBar in
+            noticeCV.width == filterBar.width
+            noticeCV.height == 91
+            noticeCV.centerX == filterBar.superview!.centerX
+            noticeCV.top == filterBar.bottom + 4
+        }
+    }
     
     //----------------------------------------------------//
     // MARK: Screen dismiss setup
@@ -169,6 +212,35 @@ class FoodSelectionView: UIView, UITableViewDelegate, UITableViewDataSource {
         partnerListCell.textLabel!.text = "\(foodSelectionArray[indexPath.row])"
         return partnerListCell
     }
+    
+    //----------------------------------------------------//
+    // MARK: CollectionView setup
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print ("number of pages is \(noticeArray.count)")
+        return noticeArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let noticeCell = collectionView.dequeueReusableCell(withReuseIdentifier: "pages", for: indexPath as IndexPath) as! FoodSelectionNoticeCell
+        noticeCell.backgroundColor = indexPath.item % 2 == 0 ? .red : .green
+        noticeCell.label.text = "\(noticeArray[indexPath.row])"
+        return noticeCell
+    }
+    
+
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout noticeCollectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 375, height: 91)
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+
     
 
 }
