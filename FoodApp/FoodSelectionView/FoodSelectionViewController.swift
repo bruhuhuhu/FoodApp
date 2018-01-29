@@ -22,12 +22,11 @@ var deliveryAddressEntered: String = ""
         self.view.backgroundColor = UIColor.green
  
     foodSelectionView = FoodSelectionView(frame: CGRect.zero)
-    
+        // Passing delivery address on navigation bar
         self.navigationItem.title = deliveryAddressEntered
-       
         foodSelectionView.deliveryAddressEntered = deliveryAddressEntered
         
-        // Autolayout ---- to be edited for iphone x
+        // Autolayout
         self.view.addSubview(foodSelectionView)
         constrain (foodSelectionView) { foodSelectionView in
             foodSelectionView.left == foodSelectionView.superview!.left

@@ -64,19 +64,6 @@ class FoodSelectionView: UIView, UITableViewDelegate, UITableViewDataSource, UIC
     let noticeCollectionViewLayout = UICollectionViewFlowLayout.init()
     var noticeCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout:UICollectionViewFlowLayout.init())
     var noticeArray = ["this is page 1", "this is page 2", "this is page 3"]
-    
-    // page views
-//    var pages = [UILabel()]
-//
-//    var page : UILabel! = {
-//        let page = UILabel()
-//        page.text = "this is a page"
-//        page.textColor = UIColor.gray
-//        page.textAlignment = .center
-//        page.font = .systemFont(ofSize: 28)
-//        return page
-//    }()
-    
 
     
     
@@ -90,16 +77,14 @@ class FoodSelectionView: UIView, UITableViewDelegate, UITableViewDataSource, UIC
 
         noticeCollectionView.delegate = self
         noticeCollectionView.dataSource = self
-        noticeCollectionView.register(FoodSelectionNoticeCell.self, forCellWithReuseIdentifier: "pages")
+        noticeCollectionView.register(FoodSelectionNoticeCollectionViewCell.self, forCellWithReuseIdentifier: "pages")
         
         
         self.addSubview(noticeCollectionView)
-        
-        
         self.addSubview(naviBar)
         self.addSubview(foodSelectionTableView)
         self.addSubview(filterBar)
-        //self.addSubview(page)
+        
         foodSelectionTableView.delegate = self
         foodSelectionTableView.dataSource = self
         foodSelectionTableView.register(UITableViewCell.self, forCellReuseIdentifier: "partnerListCell")
@@ -116,7 +101,6 @@ class FoodSelectionView: UIView, UITableViewDelegate, UITableViewDataSource, UIC
             foodSelectionTableViewConstraint()
             filterBarConstraint()
             noticeCollectionViewConstraint()
-            //pageConstraint()
         }
         super.updateConstraints()
     }
@@ -222,8 +206,7 @@ class FoodSelectionView: UIView, UITableViewDelegate, UITableViewDataSource, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let noticeCell = collectionView.dequeueReusableCell(withReuseIdentifier: "pages", for: indexPath as IndexPath) as! FoodSelectionNoticeCell
-        noticeCell.backgroundColor = indexPath.item % 2 == 0 ? .red : .green
+        let noticeCell = collectionView.dequeueReusableCell(withReuseIdentifier: "pages", for: indexPath as IndexPath) as! FoodSelectionNoticeCollectionViewCell
         noticeCell.label.text = "\(noticeArray[indexPath.row])"
         return noticeCell
     }
@@ -241,6 +224,5 @@ class FoodSelectionView: UIView, UITableViewDelegate, UITableViewDataSource, UIC
         return 0
     }
 
-    
 
 }

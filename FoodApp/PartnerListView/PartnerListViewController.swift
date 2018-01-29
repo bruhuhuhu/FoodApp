@@ -21,9 +21,8 @@ class PartnerListViewController: UIViewController {
         
         partnerListView = PartnerListView(frame: CGRect.zero)
         
-        // Autolayout ---- to be edited for iphone x
+        // Autolayout
         self.view.addSubview(partnerListView)
-        // Autolayout ---- to be edited for iphone x
         constrain (partnerListView) { partnerListView in
             partnerListView.left == partnerListView.superview!.left
             partnerListView.right == partnerListView.superview!.right

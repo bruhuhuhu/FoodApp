@@ -13,6 +13,7 @@ var mainView: MainView!
 
 
 class MainViewController: UIViewController, MainViewDelegate {
+
     
 
     
@@ -20,14 +21,14 @@ class MainViewController: UIViewController, MainViewDelegate {
         super.viewDidLoad()
         
         mainView = MainView(frame: CGRect.zero)
-        self.view.addSubview(mainView)
         mainView.mainViewDelegate = self
         
         // Background
         self.view.backgroundColor = UIColor.lightGray
-
         
-        // Autolayout ---- to be edited for iphone x
+        
+        // Autolayout
+        self.view.addSubview(mainView)
         constrain (mainView) { mainView in
         mainView.left == mainView.superview!.left
         mainView.right == mainView.superview!.right
@@ -52,6 +53,8 @@ class MainViewController: UIViewController, MainViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
     
 
     // MARK: Switches
@@ -79,45 +82,13 @@ class MainViewController: UIViewController, MainViewDelegate {
         self.present (foodSelectionVC, animated: true, completion: nil)
     }
     
+    
+    func didSelectPartnerList() {
+    }
+    
+    func didSelectDeliveryAddress(deliverAddress: String?) {
+       
+    }
+    
 }
 
-
-//----------------------------------------------------//
-// MARK: Keyboard and Switch to Delivery Address View
-
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//
-//        //dismiss keyboard
-//        textField.resignFirstResponder()
-//        let deliveryAddress = textField.text!
-//
-//        //adding new entry into the addressArray
-//        mainView.deliveryAddressArray.append(deliveryAddress)
-//        textField.text = "Enter Delivery Address"
-//
-//        //refreshing the view
-//        mainView.deliveryAddressTableView.reloadData()
-//        viewDidLayoutSubviews()
-//
-//        //change view to second screen after return is clicked
-//        let deliveryAddressVC = DeliveryAddressViewController()
-//        deliveryAddressVC.deliveryAddressEntered = deliveryAddress
-//        self.present (deliveryAddressVC, animated: true, completion: nil)
-//
-//        return false
-//    }
-//
-//
-//    override func viewDidLayoutSubviews() {
-//          //refreshes table view after data entry
-//          mainView.updateConstraints()
-//          mainView.deliveryAddressTableView.beginUpdates()
-//          mainView.deliveryAddressTableView.setNeedsDisplay()
-//          mainView.deliveryAddressTableView.endUpdates()
-//    }
-//
-//    func textFieldDidBeginEditing(_ textField: UITextField) {
-//        textField.text = ""
-//    }
-
-//----------------------------------------------------//

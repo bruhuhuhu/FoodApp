@@ -135,5 +135,4 @@ class PartnerListView: UIView, UITableViewDelegate, UITableViewDataSource {
         return partnerListCell
     }
     
-
 }

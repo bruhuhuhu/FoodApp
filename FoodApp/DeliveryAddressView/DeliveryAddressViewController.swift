@@ -30,9 +30,8 @@ class DeliveryAddressViewController: UIViewController, UITextFieldDelegate,Deliv
         self.view.backgroundColor = UIColor.lightGray
         
         
-        // Autolayout ---- to be edited for iphone x
+        // Autolayout
         self.view.addSubview(deliveryAddressView)
-        // Autolayout ---- to be edited for iphone x
         constrain (deliveryAddressView) { deliveryAddressView in
             deliveryAddressView.left == deliveryAddressView.superview!.left
             deliveryAddressView.right == deliveryAddressView.superview!.right
@@ -43,7 +42,6 @@ class DeliveryAddressViewController: UIViewController, UITextFieldDelegate,Deliv
             NSLayoutConstraint.activate([
                 deliveryAddressView.topAnchor.constraintEqualToSystemSpacingBelow(guide.topAnchor, multiplier: 1.0), deliveryAddressView.bottomAnchor.constraintEqualToSystemSpacingBelow(guide.bottomAnchor, multiplier: 1.0)
                 ])
-            
         } else {
             let standardSpacing: CGFloat = 8.0
             NSLayoutConstraint.activate([

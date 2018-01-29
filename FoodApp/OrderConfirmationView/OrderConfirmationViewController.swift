@@ -15,9 +15,9 @@ class OrderConfirmationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-         self.view.backgroundColor = UIColor.orange
-        self.view.addSubview(orderConfirmationView)
-        // Autolayout ---- to be edited for iphone x
+        self.view.backgroundColor = UIColor.orange
+        
+        // Autolayout
         self.view.addSubview(orderConfirmationView)
         constrain (orderConfirmationView) { orderConfirmationView in
             orderConfirmationView.left == orderConfirmationView.superview!.left

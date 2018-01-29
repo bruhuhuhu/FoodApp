@@ -117,7 +117,7 @@ class DeliveryAddressView: UIView, UITableViewDelegate, UITableViewDataSource {
     // table view
 
     func deliveryAddressTableViewConstraint(){
-                deliveryAddressTableView.backgroundColor = UIColor.blue
+        deliveryAddressTableView.backgroundColor = UIColor.blue
         let tableViewHight = CGFloat(deliveryAddressArray.count * cellHeight)
         constrain(deliveryAddressTableView, deliveryAddressTextField) { deliveryAddressTV, deliveryAddressTF in
             deliveryAddressTV.width == deliveryAddressTF.width

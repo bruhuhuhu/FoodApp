@@ -12,7 +12,7 @@ import Cartography
 
 
 
-class FoodSelectionNoticeCell : UICollectionViewCell {
+class FoodSelectionNoticeCollectionViewCell : UICollectionViewCell {
     
     
     var shouldSetupConstraints = true

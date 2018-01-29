@@ -13,7 +13,7 @@
 		5457EA242011FFFD00E4A3E7 /* PartnerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457EA232011FFFD00E4A3E7 /* PartnerListView.swift */; };
 		5457EA262012001600E4A3E7 /* FoodSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457EA252012001600E4A3E7 /* FoodSelectionView.swift */; };
 		5457EA282012004700E4A3E7 /* OrderConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457EA272012004700E4A3E7 /* OrderConfirmationView.swift */; };
-		5459B900201ABBB1000D049A /* FoodSelectionNoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5459B8FF201ABBB1000D049A /* FoodSelectionNoticeCell.swift */; };
+		5459B900201ABBB1000D049A /* FoodSelectionNoticeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5459B8FF201ABBB1000D049A /* FoodSelectionNoticeCollectionViewCell.swift */; };
 		54859309200DF792004B46DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54859308200DF792004B46DA /* AppDelegate.swift */; };
 		5485930E200DF792004B46DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5485930C200DF792004B46DA /* Main.storyboard */; };
 		54859310200DF792004B46DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5485930F200DF792004B46DA /* Assets.xcassets */; };
@@ -34,7 +34,7 @@
 		5457EA232011FFFD00E4A3E7 /* PartnerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerListView.swift; sourceTree = "<group>"; };
 		5457EA252012001600E4A3E7 /* FoodSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSelectionView.swift; sourceTree = "<group>"; };
 		5457EA272012004700E4A3E7 /* OrderConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmationView.swift; sourceTree = "<group>"; };
-		5459B8FF201ABBB1000D049A /* FoodSelectionNoticeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodSelectionNoticeCell.swift; sourceTree = "<group>"; };
+		5459B8FF201ABBB1000D049A /* FoodSelectionNoticeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodSelectionNoticeCollectionViewCell.swift; sourceTree = "<group>"; };
 		54859305200DF792004B46DA /* FoodApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54859308200DF792004B46DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5485930D200DF792004B46DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -70,6 +70,52 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		5456F01B201EE91C0005305C /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				5485931F200DFC1C004B46DA /* MainViewController.swift */,
+				5485931D200DFC06004B46DA /* MainView.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		5456F01C201EE93A0005305C /* DeliveryAddressView */ = {
+			isa = PBXGroup;
+			children = (
+				54F13799200F50D700C62C99 /* DeliveryAddressViewController.swift */,
+				54F1379B200F510700C62C99 /* DeliveryAddressView.swift */,
+			);
+			path = DeliveryAddressView;
+			sourceTree = "<group>";
+		};
+		5456F01D201EE94B0005305C /* FoodSelectionView */ = {
+			isa = PBXGroup;
+			children = (
+				5457EA1D2011FF1300E4A3E7 /* FoodSelectionViewController.swift */,
+				5457EA252012001600E4A3E7 /* FoodSelectionView.swift */,
+				5459B8FF201ABBB1000D049A /* FoodSelectionNoticeCollectionViewCell.swift */,
+			);
+			path = FoodSelectionView;
+			sourceTree = "<group>";
+		};
+		5456F01E201EE9600005305C /* OrderConfirmationView */ = {
+			isa = PBXGroup;
+			children = (
+				5457EA1F2011FFB800E4A3E7 /* OrderConfirmationViewController.swift */,
+				5457EA272012004700E4A3E7 /* OrderConfirmationView.swift */,
+			);
+			path = OrderConfirmationView;
+			sourceTree = "<group>";
+		};
+		5456F01F201EEA140005305C /* PartnerListView */ = {
+			isa = PBXGroup;
+			children = (
+				5457EA1B2011FD6600E4A3E7 /* PartnerListViewController.swift */,
+				5457EA232011FFFD00E4A3E7 /* PartnerListView.swift */,
+			);
+			path = PartnerListView;
+			sourceTree = "<group>";
+		};
 		548592FC200DF792004B46DA = {
 			isa = PBXGroup;
 			children = (
@@ -91,9 +137,11 @@
 		54859307200DF792004B46DA /* FoodApp */ = {
 			isa = PBXGroup;
 			children = (
-				5485931C200DFBB0004B46DA /* Controller */,
-				5485931B200DFBA6004B46DA /* View */,
-				5485931A200DFB9A004B46DA /* Model */,
+				5456F01F201EEA140005305C /* PartnerListView */,
+				5456F01E201EE9600005305C /* OrderConfirmationView */,
+				5456F01D201EE94B0005305C /* FoodSelectionView */,
+				5456F01C201EE93A0005305C /* DeliveryAddressView */,
+				5456F01B201EE91C0005305C /* MainView */,
 				54859308200DF792004B46DA /* AppDelegate.swift */,
 				5485930C200DF792004B46DA /* Main.storyboard */,
 				5485930F200DF792004B46DA /* Assets.xcassets */,
@@ -101,46 +149,6 @@
 				54859314200DF792004B46DA /* Info.plist */,
 			);
 			path = FoodApp;
-			sourceTree = "<group>";
-		};
-		5485931A200DFB9A004B46DA /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		5485931B200DFBA6004B46DA /* View */ = {
-			isa = PBXGroup;
-			children = (
-				5485931D200DFC06004B46DA /* MainView.swift */,
-				54F1379B200F510700C62C99 /* DeliveryAddressView.swift */,
-				5457EA232011FFFD00E4A3E7 /* PartnerListView.swift */,
-				54ABEDF42017294B006F367D /* FoodSelectionView */,
-				5457EA272012004700E4A3E7 /* OrderConfirmationView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		5485931C200DFBB0004B46DA /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				5485931F200DFC1C004B46DA /* MainViewController.swift */,
-				54F13799200F50D700C62C99 /* DeliveryAddressViewController.swift */,
-				5457EA1B2011FD6600E4A3E7 /* PartnerListViewController.swift */,
-				5457EA1D2011FF1300E4A3E7 /* FoodSelectionViewController.swift */,
-				5457EA1F2011FFB800E4A3E7 /* OrderConfirmationViewController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		54ABEDF42017294B006F367D /* FoodSelectionView */ = {
-			isa = PBXGroup;
-			children = (
-				5459B8FF201ABBB1000D049A /* FoodSelectionNoticeCell.swift */,
-				5457EA252012001600E4A3E7 /* FoodSelectionView.swift */,
-			);
-			path = FoodSelectionView;
 			sourceTree = "<group>";
 		};
 		B03A718A85BD0958D4C88746 /* Frameworks */ = {
@@ -289,7 +297,7 @@
 				5457EA1E2011FF1300E4A3E7 /* FoodSelectionViewController.swift in Sources */,
 				5457EA282012004700E4A3E7 /* OrderConfirmationView.swift in Sources */,
 				54859309200DF792004B46DA /* AppDelegate.swift in Sources */,
-				5459B900201ABBB1000D049A /* FoodSelectionNoticeCell.swift in Sources */,
+				5459B900201ABBB1000D049A /* FoodSelectionNoticeCollectionViewCell.swift in Sources */,
 				54859320200DFC1C004B46DA /* MainViewController.swift in Sources */,
 				5457EA202011FFB800E4A3E7 /* OrderConfirmationViewController.swift in Sources */,
 				5457EA262012001600E4A3E7 /* FoodSelectionView.swift in Sources */,

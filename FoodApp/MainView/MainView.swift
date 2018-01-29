@@ -11,6 +11,9 @@ import Cartography
 
 
 protocol MainViewDelegate : NSObjectProtocol {
+    func didSelectPartnerList()
+    func didSelectDeliveryAddress(deliverAddress: String?)
+    
     func partnerListButtonSwitch()
     func deliveryAddressButtonSwitch()
     func deliveryAddressSwitch(deliveryAddress: String)
@@ -22,8 +25,8 @@ class MainView: UIView, UITableViewDelegate, UITableViewDataSource {
     weak var mainViewDelegate: MainViewDelegate?
     
     var shouldSetupConstraints = true
-    //----------------------------------------------------//
-    // MARK: Define the UI elements
+    
+    // MARK: - Define the UI elements
     
     // navi bar
     
@@ -106,7 +109,6 @@ class MainView: UIView, UITableViewDelegate, UITableViewDataSource {
         self.addSubview(takeAwayLabel)
         self.addSubview(takeAwaySubLabel)
         self.addSubview(partnerLabel)
-        //self.addSubview(deliveryAddressTextField)
         self.addSubview(partnerListButton)
         self.addSubview(deliveryAddressButton)
 
@@ -125,6 +127,10 @@ class MainView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    private func setup() {
+        
     }
     
     override func updateConstraints() {
