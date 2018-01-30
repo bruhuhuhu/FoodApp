@@ -11,17 +11,15 @@
 		5457EA1E2011FF1300E4A3E7 /* FoodSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457EA1D2011FF1300E4A3E7 /* FoodSelectionViewController.swift */; };
 		5457EA202011FFB800E4A3E7 /* OrderConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457EA1F2011FFB800E4A3E7 /* OrderConfirmationViewController.swift */; };
 		5457EA242011FFFD00E4A3E7 /* PartnerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457EA232011FFFD00E4A3E7 /* PartnerListView.swift */; };
-		5457EA262012001600E4A3E7 /* FoodSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457EA252012001600E4A3E7 /* FoodSelectionView.swift */; };
-		5457EA282012004700E4A3E7 /* OrderConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457EA272012004700E4A3E7 /* OrderConfirmationView.swift */; };
 		5459B900201ABBB1000D049A /* FoodSelectionNoticeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5459B8FF201ABBB1000D049A /* FoodSelectionNoticeCollectionViewCell.swift */; };
+		5470499B202032F200030F4E /* DeliveryAddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5470499A202032F200030F4E /* DeliveryAddressViewModel.swift */; };
+		5470499D2020343800030F4E /* DeliveryAddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5470499C2020343800030F4E /* DeliveryAddressModel.swift */; };
 		54859309200DF792004B46DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54859308200DF792004B46DA /* AppDelegate.swift */; };
 		5485930E200DF792004B46DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5485930C200DF792004B46DA /* Main.storyboard */; };
 		54859310200DF792004B46DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5485930F200DF792004B46DA /* Assets.xcassets */; };
 		54859313200DF792004B46DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54859311200DF792004B46DA /* LaunchScreen.storyboard */; };
-		5485931E200DFC06004B46DA /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5485931D200DFC06004B46DA /* MainView.swift */; };
 		54859320200DFC1C004B46DA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5485931F200DFC1C004B46DA /* MainViewController.swift */; };
 		54F1379A200F50D700C62C99 /* DeliveryAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F13799200F50D700C62C99 /* DeliveryAddressViewController.swift */; };
-		54F1379C200F510700C62C99 /* DeliveryAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F1379B200F510700C62C99 /* DeliveryAddressView.swift */; };
 		873C8978EF0F0D89C4608EA7 /* Pods_FoodApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90CF482804352CA0A98945AE /* Pods_FoodApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,19 +30,17 @@
 		5457EA1D2011FF1300E4A3E7 /* FoodSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSelectionViewController.swift; sourceTree = "<group>"; };
 		5457EA1F2011FFB800E4A3E7 /* OrderConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmationViewController.swift; sourceTree = "<group>"; };
 		5457EA232011FFFD00E4A3E7 /* PartnerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerListView.swift; sourceTree = "<group>"; };
-		5457EA252012001600E4A3E7 /* FoodSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSelectionView.swift; sourceTree = "<group>"; };
-		5457EA272012004700E4A3E7 /* OrderConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmationView.swift; sourceTree = "<group>"; };
 		5459B8FF201ABBB1000D049A /* FoodSelectionNoticeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodSelectionNoticeCollectionViewCell.swift; sourceTree = "<group>"; };
+		5470499A202032F200030F4E /* DeliveryAddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryAddressViewModel.swift; sourceTree = "<group>"; };
+		5470499C2020343800030F4E /* DeliveryAddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryAddressModel.swift; sourceTree = "<group>"; };
 		54859305200DF792004B46DA /* FoodApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54859308200DF792004B46DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5485930D200DF792004B46DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5485930F200DF792004B46DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		54859312200DF792004B46DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		54859314200DF792004B46DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5485931D200DFC06004B46DA /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		5485931F200DFC1C004B46DA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		54F13799200F50D700C62C99 /* DeliveryAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryAddressViewController.swift; sourceTree = "<group>"; };
-		54F1379B200F510700C62C99 /* DeliveryAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryAddressView.swift; sourceTree = "<group>"; };
 		60E6400D9588E09535F10AED /* Pods-FoodApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FoodApp/Pods-FoodApp.debug.xcconfig"; sourceTree = "<group>"; };
 		90CF482804352CA0A98945AE /* Pods_FoodApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -74,7 +70,6 @@
 			isa = PBXGroup;
 			children = (
 				5485931F200DFC1C004B46DA /* MainViewController.swift */,
-				5485931D200DFC06004B46DA /* MainView.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -83,7 +78,6 @@
 			isa = PBXGroup;
 			children = (
 				54F13799200F50D700C62C99 /* DeliveryAddressViewController.swift */,
-				54F1379B200F510700C62C99 /* DeliveryAddressView.swift */,
 			);
 			path = DeliveryAddressView;
 			sourceTree = "<group>";
@@ -92,7 +86,6 @@
 			isa = PBXGroup;
 			children = (
 				5457EA1D2011FF1300E4A3E7 /* FoodSelectionViewController.swift */,
-				5457EA252012001600E4A3E7 /* FoodSelectionView.swift */,
 				5459B8FF201ABBB1000D049A /* FoodSelectionNoticeCollectionViewCell.swift */,
 			);
 			path = FoodSelectionView;
@@ -102,7 +95,6 @@
 			isa = PBXGroup;
 			children = (
 				5457EA1F2011FFB800E4A3E7 /* OrderConfirmationViewController.swift */,
-				5457EA272012004700E4A3E7 /* OrderConfirmationView.swift */,
 			);
 			path = OrderConfirmationView;
 			sourceTree = "<group>";
@@ -137,6 +129,8 @@
 		54859307200DF792004B46DA /* FoodApp */ = {
 			isa = PBXGroup;
 			children = (
+				5470499C2020343800030F4E /* DeliveryAddressModel.swift */,
+				5470499A202032F200030F4E /* DeliveryAddressViewModel.swift */,
 				5456F01F201EEA140005305C /* PartnerListView */,
 				5456F01E201EE9600005305C /* OrderConfirmationView */,
 				5456F01D201EE94B0005305C /* FoodSelectionView */,
@@ -293,17 +287,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5485931E200DFC06004B46DA /* MainView.swift in Sources */,
 				5457EA1E2011FF1300E4A3E7 /* FoodSelectionViewController.swift in Sources */,
-				5457EA282012004700E4A3E7 /* OrderConfirmationView.swift in Sources */,
 				54859309200DF792004B46DA /* AppDelegate.swift in Sources */,
 				5459B900201ABBB1000D049A /* FoodSelectionNoticeCollectionViewCell.swift in Sources */,
 				54859320200DFC1C004B46DA /* MainViewController.swift in Sources */,
 				5457EA202011FFB800E4A3E7 /* OrderConfirmationViewController.swift in Sources */,
-				5457EA262012001600E4A3E7 /* FoodSelectionView.swift in Sources */,
 				5457EA1C2011FD6600E4A3E7 /* PartnerListViewController.swift in Sources */,
 				54F1379A200F50D700C62C99 /* DeliveryAddressViewController.swift in Sources */,
-				54F1379C200F510700C62C99 /* DeliveryAddressView.swift in Sources */,
+				5470499B202032F200030F4E /* DeliveryAddressViewModel.swift in Sources */,
+				5470499D2020343800030F4E /* DeliveryAddressModel.swift in Sources */,
 				5457EA242011FFFD00E4A3E7 /* PartnerListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
