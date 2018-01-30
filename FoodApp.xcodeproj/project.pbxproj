@@ -10,7 +10,6 @@
 		5457EA1C2011FD6600E4A3E7 /* PartnerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457EA1B2011FD6600E4A3E7 /* PartnerListViewController.swift */; };
 		5457EA1E2011FF1300E4A3E7 /* FoodSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457EA1D2011FF1300E4A3E7 /* FoodSelectionViewController.swift */; };
 		5457EA202011FFB800E4A3E7 /* OrderConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457EA1F2011FFB800E4A3E7 /* OrderConfirmationViewController.swift */; };
-		5457EA242011FFFD00E4A3E7 /* PartnerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457EA232011FFFD00E4A3E7 /* PartnerListView.swift */; };
 		5459B900201ABBB1000D049A /* FoodSelectionNoticeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5459B8FF201ABBB1000D049A /* FoodSelectionNoticeCollectionViewCell.swift */; };
 		5470499B202032F200030F4E /* DeliveryAddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5470499A202032F200030F4E /* DeliveryAddressViewModel.swift */; };
 		5470499D2020343800030F4E /* DeliveryAddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5470499C2020343800030F4E /* DeliveryAddressModel.swift */; };
@@ -29,7 +28,6 @@
 		5457EA1B2011FD6600E4A3E7 /* PartnerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerListViewController.swift; sourceTree = "<group>"; };
 		5457EA1D2011FF1300E4A3E7 /* FoodSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSelectionViewController.swift; sourceTree = "<group>"; };
 		5457EA1F2011FFB800E4A3E7 /* OrderConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmationViewController.swift; sourceTree = "<group>"; };
-		5457EA232011FFFD00E4A3E7 /* PartnerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerListView.swift; sourceTree = "<group>"; };
 		5459B8FF201ABBB1000D049A /* FoodSelectionNoticeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodSelectionNoticeCollectionViewCell.swift; sourceTree = "<group>"; };
 		5470499A202032F200030F4E /* DeliveryAddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryAddressViewModel.swift; sourceTree = "<group>"; };
 		5470499C2020343800030F4E /* DeliveryAddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryAddressModel.swift; sourceTree = "<group>"; };
@@ -103,7 +101,6 @@
 			isa = PBXGroup;
 			children = (
 				5457EA1B2011FD6600E4A3E7 /* PartnerListViewController.swift */,
-				5457EA232011FFFD00E4A3E7 /* PartnerListView.swift */,
 			);
 			path = PartnerListView;
 			sourceTree = "<group>";
@@ -296,7 +293,6 @@
 				54F1379A200F50D700C62C99 /* DeliveryAddressViewController.swift in Sources */,
 				5470499B202032F200030F4E /* DeliveryAddressViewModel.swift in Sources */,
 				5470499D2020343800030F4E /* DeliveryAddressModel.swift in Sources */,
-				5457EA242011FFFD00E4A3E7 /* PartnerListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

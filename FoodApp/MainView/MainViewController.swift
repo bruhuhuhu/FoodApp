@@ -10,25 +10,20 @@ import UIKit
 import Cartography
 
 
-class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+class MainViewController: UIViewController {
 
-    
-    
-    
     // MARK: - Define the UI elements
     
-    // navi bar
     var naviBar : UINavigationBar! = {
         let naviBar = UINavigationBar()
         let navItem = UINavigationItem();
         let backBtn = UIBarButtonItem (barButtonSystemItem: .stop, target: self, action: nil)
         navItem.leftBarButtonItem = backBtn
         naviBar.setItems([navItem], animated: false);
+        
         return naviBar
     }()
     
-    // labels
     let takeAwayLabel: UILabel! = {
         let label = UILabel()
         label.text = "TAKE AWAY"
@@ -55,61 +50,38 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         return label
     }()
-    
-    // button
+
     
     let deliveryAddressButton: UIButton! = {
         let button = UIButton()
-        button.addTarget(self, action: #selector(deliveryAddressButtonSwitch), for: .touchDown)
+        button.addTarget(self, action: #selector(didSelectDeliveryAddressButton), for: .touchDown)
         button.setTitle("Enter Delivery Address", for: .normal)
         button.backgroundColor = UIColor.black
         
         return button
-        
     }()
     
     
     let partnerListButton: UIButton! = {
         let button = UIButton()
-        button.addTarget(self, action: #selector(partnerListButtonSwitch), for: .touchDown)
+        button.addTarget(self, action: #selector(didSelectPartnerListButton), for: .touchDown)
         button.setTitle("v", for: .normal)
         
         return button
     }()
     
-    // table view
     
     var deliveryAddressArray = ["Current Location","Past Location 1"]
     let cellHeight = 50
-    
     var deliveryAddressTableView = UITableView()
     
 
+    // MARK: - Setup
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-      
-        // adding subviews to the view
-        self.view.addSubview(naviBar)
-        self.view.addSubview(takeAwayLabel)
-        self.view.addSubview(takeAwaySubLabel)
-        self.view.addSubview(deliveryAddressButton)
-        self.view.addSubview(partnerLabel)
-        self.view.addSubview(partnerListButton)
-        
-        //tableview setup
-        deliveryAddressTableView.rowHeight = 50
-        
-        self.view.addSubview(deliveryAddressTableView)
-        
-        deliveryAddressTableView.delegate = self
-        deliveryAddressTableView.dataSource = self
-        deliveryAddressTableView.register(UITableViewCell.self, forCellReuseIdentifier: "deliveryAddressCell")
-        
         self.view.backgroundColor = UIColor.lightGray
-        
-        // add autolayout
+        setupView()
         updateConstraints()
 
     }
@@ -120,8 +92,21 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-    //----------------------------------------------------//
-    // MARK: - Constraints
+    func setupView() {
+        deliveryAddressTableView.rowHeight = 50
+        deliveryAddressTableView.delegate = self
+        deliveryAddressTableView.dataSource = self
+        deliveryAddressTableView.register(UITableViewCell.self, forCellReuseIdentifier: "deliveryAddressCell")
+        
+        self.view.addSubview(naviBar)
+        self.view.addSubview(takeAwayLabel)
+        self.view.addSubview(takeAwaySubLabel)
+        self.view.addSubview(deliveryAddressButton)
+        self.view.addSubview(partnerLabel)
+        self.view.addSubview(partnerListButton)
+        self.view.addSubview(deliveryAddressTableView)
+    }
+    
     
     func updateConstraints() {
         naviBarConstraint()
@@ -133,16 +118,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         deliveryAddressButtonConstraint()
     }
     
-    
 
+    // MARK: - Constraints
     
-    // table view
     func deliveryAddressTableViewConstraint(){
         
         constrain(deliveryAddressTableView, deliveryAddressButton) { deliveryAddressTV, deliveryAddressBtn in
-            
-            //          let tableViewHeight = CGFloat(deliveryAddressArray.count * cellHeight)
-            
             deliveryAddressTV.width == deliveryAddressBtn.width
             deliveryAddressTV.height == 150
             deliveryAddressTV.centerX == deliveryAddressBtn.superview!.centerX
@@ -150,7 +131,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
     }
-
     
     func partnerListButtonConstraint (){
         constrain(partnerListButton, self.view){partnerListBtn, view in
@@ -162,8 +142,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    
-    // navi bar
     func naviBarConstraint (){
         constrain (naviBar, self.view) { navi, view in
             navi.width == view.width
@@ -172,8 +150,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             navi.centerX == view.centerX
         }
     }
-    
-    // labels
     
     func takeAwayLabelConstraint (){
         constrain(takeAwayLabel, self.view){label, view in
@@ -202,8 +178,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    // button
-    
     func deliveryAddressButtonConstraint() {
         constrain(deliveryAddressButton,takeAwaySubLabel){ deliveryAddressBtn, subLabel in
             deliveryAddressBtn.width == 359
@@ -214,17 +188,43 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-    //----------------------------------------------------//
-    // MARK: TableView setup
+    // MARK: - Did Select
+    
+    
+    // MARK: Switch to Partner List View
+  @objc func didSelectPartnerListButton() {
+        let partnerListVC = PartnerListViewController()
+        self.present (partnerListVC, animated: true, completion: nil)
+    }
+    
+  @objc func didSelectDeliveryAddress(deliveryAddress: String) {
+        let foodSelectionVC = FoodSelectionViewController()
+        foodSelectionVC.deliveryAddressEntered = deliveryAddress
+        self.present (foodSelectionVC, animated: true, completion: nil)
+    }
+    
+    @objc func didSelectDeliveryAddressButton() {
+        let  deliveryAddressVC = DeliveryAddressViewController()
+        self.present (deliveryAddressVC, animated: true, completion: nil)
+    }
+    
+}
+
+
+extension MainViewController: UITableViewDelegate  {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Num: \(indexPath.row)")
         let deliveryAddressCell = tableView.dequeueReusableCell(withIdentifier: "deliveryAddressCell", for: indexPath as IndexPath)
-        let deliveryAddressSelected = deliveryAddressArray[indexPath.row]
-        deliveryAddressSwitch(deliveryAddress: deliveryAddressSelected)
+        let deliveryAddressSelected = self.deliveryAddressArray[indexPath.row]
+        print ("\(deliveryAddressSelected)")
+        didSelectDeliveryAddress(deliveryAddress: deliveryAddressSelected)
         print("Value: \(deliveryAddressArray[indexPath.row])")
     }
     
+}
+
+extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return deliveryAddressArray.count
     }
@@ -235,35 +235,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         return deliveryAddressCell
     }
     
-/////////////////////////////////////////
-    // MARK: - Switches
     
+
     
-    // MARK: Switch to Partner List View
-  @objc func partnerListButtonSwitch() {
-        let partnerListVC = PartnerListViewController()
-        self.present (partnerListVC, animated: true, completion: nil)
-    }
-    // Switch to Delivery Address View When Tap on Enter Delivery Address
-   @objc func deliveryAddressButtonSwitch() {
-        let deliveryAddressVC = DeliveryAddressViewController()
-        self.present (deliveryAddressVC, animated: true, completion: nil)
-       
-    }
-    
-    // Switch to Food Selection View When Tap on Addresses on Main View Table View
-   @objc func deliveryAddressSwitch(deliveryAddress: String) {
-        let foodSelectionVC = FoodSelectionViewController()
-        foodSelectionVC.deliveryAddressEntered = deliveryAddress
-        self.present (foodSelectionVC, animated: true, completion: nil)
-    }
-    
-    
-    func didSelectPartnerList() {
-    }
-    
-    func didSelectDeliveryAddress(deliverAddress: String?) {
-       
-    }
     
 }

@@ -9,12 +9,8 @@
 import UIKit
 import Cartography
 
-
-
-
 class FoodSelectionNoticeCollectionViewCell : UICollectionViewCell {
-    
-    
+
     var shouldSetupConstraints = true
     var label : UILabel! = {
         let label = UILabel()
@@ -28,15 +24,15 @@ class FoodSelectionNoticeCollectionViewCell : UICollectionViewCell {
     
     override init (frame: CGRect) {
         super.init(frame: frame)
+        
         addSubview(label)
-
         label.contentMode = .scaleToFill
         label.translatesAutoresizingMaskIntoConstraints = false
         label.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         label.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         label.topAnchor.constraint(equalTo: topAnchor).isActive = true
         label.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-      
+
     }
     
     required init?(coder aDecoder: NSCoder) {
