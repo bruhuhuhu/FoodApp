@@ -11,8 +11,8 @@
 		5457EA1E2011FF1300E4A3E7 /* FoodSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457EA1D2011FF1300E4A3E7 /* FoodSelectionViewController.swift */; };
 		5457EA202011FFB800E4A3E7 /* OrderConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457EA1F2011FFB800E4A3E7 /* OrderConfirmationViewController.swift */; };
 		5459B900201ABBB1000D049A /* FoodSelectionNoticeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5459B8FF201ABBB1000D049A /* FoodSelectionNoticeCollectionViewCell.swift */; };
-		5470499B202032F200030F4E /* DeliveryAddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5470499A202032F200030F4E /* DeliveryAddressViewModel.swift */; };
-		5470499D2020343800030F4E /* DeliveryAddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5470499C2020343800030F4E /* DeliveryAddressModel.swift */; };
+		5470499D2020343800030F4E /* DeliveryAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5470499C2020343800030F4E /* DeliveryAddress.swift */; };
+		547049A12020804E00030F4E /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547049A02020804E00030F4E /* Address.swift */; };
 		54859309200DF792004B46DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54859308200DF792004B46DA /* AppDelegate.swift */; };
 		5485930E200DF792004B46DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5485930C200DF792004B46DA /* Main.storyboard */; };
 		54859310200DF792004B46DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5485930F200DF792004B46DA /* Assets.xcassets */; };
@@ -29,8 +29,8 @@
 		5457EA1D2011FF1300E4A3E7 /* FoodSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSelectionViewController.swift; sourceTree = "<group>"; };
 		5457EA1F2011FFB800E4A3E7 /* OrderConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmationViewController.swift; sourceTree = "<group>"; };
 		5459B8FF201ABBB1000D049A /* FoodSelectionNoticeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodSelectionNoticeCollectionViewCell.swift; sourceTree = "<group>"; };
-		5470499A202032F200030F4E /* DeliveryAddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryAddressViewModel.swift; sourceTree = "<group>"; };
-		5470499C2020343800030F4E /* DeliveryAddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryAddressModel.swift; sourceTree = "<group>"; };
+		5470499C2020343800030F4E /* DeliveryAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryAddress.swift; sourceTree = "<group>"; };
+		547049A02020804E00030F4E /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		54859305200DF792004B46DA /* FoodApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54859308200DF792004B46DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5485930D200DF792004B46DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -126,14 +126,14 @@
 		54859307200DF792004B46DA /* FoodApp */ = {
 			isa = PBXGroup;
 			children = (
-				5470499C2020343800030F4E /* DeliveryAddressModel.swift */,
-				5470499A202032F200030F4E /* DeliveryAddressViewModel.swift */,
+				547049A02020804E00030F4E /* Address.swift */,
 				5456F01F201EEA140005305C /* PartnerListView */,
 				5456F01E201EE9600005305C /* OrderConfirmationView */,
 				5456F01D201EE94B0005305C /* FoodSelectionView */,
 				5456F01C201EE93A0005305C /* DeliveryAddressView */,
 				5456F01B201EE91C0005305C /* MainView */,
 				54859308200DF792004B46DA /* AppDelegate.swift */,
+				5470499C2020343800030F4E /* DeliveryAddress.swift */,
 				5485930C200DF792004B46DA /* Main.storyboard */,
 				5485930F200DF792004B46DA /* Assets.xcassets */,
 				54859311200DF792004B46DA /* LaunchScreen.storyboard */,
@@ -287,12 +287,12 @@
 				5457EA1E2011FF1300E4A3E7 /* FoodSelectionViewController.swift in Sources */,
 				54859309200DF792004B46DA /* AppDelegate.swift in Sources */,
 				5459B900201ABBB1000D049A /* FoodSelectionNoticeCollectionViewCell.swift in Sources */,
+				547049A12020804E00030F4E /* Address.swift in Sources */,
 				54859320200DFC1C004B46DA /* MainViewController.swift in Sources */,
 				5457EA202011FFB800E4A3E7 /* OrderConfirmationViewController.swift in Sources */,
 				5457EA1C2011FD6600E4A3E7 /* PartnerListViewController.swift in Sources */,
 				54F1379A200F50D700C62C99 /* DeliveryAddressViewController.swift in Sources */,
-				5470499B202032F200030F4E /* DeliveryAddressViewModel.swift in Sources */,
-				5470499D2020343800030F4E /* DeliveryAddressModel.swift in Sources */,
+				5470499D2020343800030F4E /* DeliveryAddress.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

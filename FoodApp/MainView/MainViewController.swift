@@ -33,7 +33,7 @@ class MainViewController: UIViewController {
         return label
     }()
     
-    let takeAwaySubLabel: UILabel! = {
+    let takeAwaySubLabel: UILabel = {
         let label = UILabel()
         label.text = "Find the best takeaway food and service"
         label.textAlignment = .left
@@ -78,11 +78,16 @@ class MainViewController: UIViewController {
 
     // MARK: - Setup
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func loadView() {
+        super.loadView()
         self.view.backgroundColor = UIColor.lightGray
         setupView()
         updateConstraints()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
 
     }
 

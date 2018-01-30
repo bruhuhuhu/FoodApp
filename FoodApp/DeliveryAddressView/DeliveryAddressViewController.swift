@@ -11,7 +11,8 @@ import Cartography
 
 class DeliveryAddressViewController: UIViewController {
     
-    private var viewModel = DeliveryAddressViewModel()
+    var deliveryAddressEntered: String = ""
+    
     let mainVC = MainViewController()
 
     // MARK: - Define the UI elements
@@ -64,7 +65,7 @@ class DeliveryAddressViewController: UIViewController {
         deliveryAddressTableView.dataSource = mainVC
         deliveryAddressTableView.register(UITableViewCell.self, forCellReuseIdentifier: "deliveryAddressCell")
         
-        self.deliveryAddressTextField.text = viewModel.address
+        self.deliveryAddressTextField.text = deliveryAddressEntered
         self.deliveryAddressTextField.delegate = self
         self.deliveryAddressTableView.rowHeight = 50
         

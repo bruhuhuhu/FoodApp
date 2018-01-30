@@ -1,0 +1,18 @@
+//
+//  DeliveryAddressModel.swift
+//  FoodApp
+//
+//  Created by hu tsun hao on 30/1/18.
+//  Copyright © 2018 hu tsun hao. All rights reserved.
+//
+
+import Foundation
+
+struct DeliveryAddresses {
+    let deliveryAddress: [DeliveryAddress]
+    
+}
+
+struct DeliveryAddress {
+    let address : String
+}

@@ -1,5 +1,5 @@
 //
-//  DeliveryAddressModel.swift
+//  Addresses.swift
 //  FoodApp
 //
 //  Created by hu tsun hao on 30/1/18.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct DeliveryAddress {
-    var address = ""
+struct Address {
+    let address:String
 }
