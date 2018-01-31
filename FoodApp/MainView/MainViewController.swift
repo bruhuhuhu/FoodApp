@@ -14,6 +14,8 @@ class MainViewController: UIViewController {
 
     // MARK: - Define the UI elements
     
+    lazy var viewModel = MainViewModel()
+    
     var naviBar : UINavigationBar! = {
         let naviBar = UINavigationBar()
         let navItem = UINavigationItem();
@@ -70,8 +72,8 @@ class MainViewController: UIViewController {
         return button
     }()
     
-    
-    var deliveryAddressArray = ["Current Location","Past Location 1"]
+//    
+//    var deliveryAddressArray = ["Current Location","Past Location 1"]
     let cellHeight = 50
     var deliveryAddressTableView = UITableView()
     
@@ -81,13 +83,14 @@ class MainViewController: UIViewController {
     override func loadView() {
         super.loadView()
         self.view.backgroundColor = UIColor.lightGray
+        viewModel.getDeliveryAddress()
         setupView()
         updateConstraints()
     }
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
     }
 
@@ -122,8 +125,13 @@ class MainViewController: UIViewController {
         partnerLabelConstraint()
         deliveryAddressButtonConstraint()
     }
+   
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel.getDeliveryAddress()
+        deliveryAddressTableView.reloadData()
+    }
     
-
     // MARK: - Constraints
     
     func deliveryAddressTableViewConstraint(){
@@ -216,32 +224,33 @@ class MainViewController: UIViewController {
 }
 
 
+
+
 extension MainViewController: UITableViewDelegate  {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Num: \(indexPath.row)")
-        let deliveryAddressCell = tableView.dequeueReusableCell(withIdentifier: "deliveryAddressCell", for: indexPath as IndexPath)
-        let deliveryAddressSelected = self.deliveryAddressArray[indexPath.row]
-        print ("\(deliveryAddressSelected)")
+        let deliveryAddress = viewModel.deliveryAddresses[indexPath.row].deliveryAddress
+        let deliveryAddressSelected = deliveryAddress
         didSelectDeliveryAddress(deliveryAddress: deliveryAddressSelected)
-        print("Value: \(deliveryAddressArray[indexPath.row])")
+        print("Value: \(deliveryAddressSelected)")
     }
     
 }
 
 extension MainViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return deliveryAddressArray.count
+        return viewModel.deliveryAddresses.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let deliveryAddressCell = tableView.dequeueReusableCell(withIdentifier: "deliveryAddressCell", for: indexPath as IndexPath)
-        deliveryAddressCell.textLabel!.text = "\(deliveryAddressArray[indexPath.row])"
+        
+        let deliveryAddress = viewModel.deliveryAddresses[indexPath.row]
+        
+        deliveryAddressCell.textLabel!.text = "\(deliveryAddress.deliveryAddress)"
+        
         return deliveryAddressCell
     }
-    
-    
-
-    
     
 }

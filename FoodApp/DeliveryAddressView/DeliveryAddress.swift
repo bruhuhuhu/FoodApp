@@ -8,6 +8,10 @@
 
 import Foundation
 
-struct Address {
-    let address:String
+struct DeliveryAddress {
+    var deliveryAddress : String
+    
+    init (deliveryAddress: String){
+        self.deliveryAddress = deliveryAddress
+    }
 }

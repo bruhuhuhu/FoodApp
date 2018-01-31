@@ -11,6 +11,12 @@ import Cartography
 
 class DeliveryAddressViewController: UIViewController {
     
+
+    lazy var viewModel = DeliveryAddressViewModel()
+    
+    
+    // Mark: - View model
+    
     var deliveryAddressEntered: String = ""
     
     let mainVC = MainViewController()
@@ -49,6 +55,8 @@ class DeliveryAddressViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.lightGray
+        viewModel.getDeliveryAddress()
+       
         setupView()
         updateConstraints()
     }
@@ -60,9 +68,10 @@ class DeliveryAddressViewController: UIViewController {
 
     
     func setupView() {
+
         
         deliveryAddressTableView.delegate = self
-        deliveryAddressTableView.dataSource = mainVC
+        deliveryAddressTableView.dataSource = self
         deliveryAddressTableView.register(UITableViewCell.self, forCellReuseIdentifier: "deliveryAddressCell")
         
         self.deliveryAddressTextField.text = deliveryAddressEntered
@@ -80,7 +89,6 @@ class DeliveryAddressViewController: UIViewController {
         deliveryAddressTextFieldConstraint()
         deliveryAddressTableViewConstraint()
     }
-    
     
     // MARK: - Constraints
     
@@ -105,11 +113,10 @@ class DeliveryAddressViewController: UIViewController {
     
     func deliveryAddressTableViewConstraint(){
         deliveryAddressTableView.backgroundColor = UIColor.blue
-        let tableViewHight = CGFloat(mainVC.deliveryAddressArray.count * cellHeight)
         constrain(deliveryAddressTableView, deliveryAddressTextField) { deliveryAddressTV, deliveryAddressTF in
             deliveryAddressTV.width == deliveryAddressTF.width
             deliveryAddressTV.centerX == deliveryAddressTF.superview!.centerX
-            deliveryAddressTV.height == tableViewHight
+            deliveryAddressTV.height == 350
             deliveryAddressTV.top == deliveryAddressTF.bottom
         }
     }
@@ -121,8 +128,6 @@ class DeliveryAddressViewController: UIViewController {
     @objc func didSelectBackButton (){
         let currentController = self.getCurrentViewController()
         currentController?.dismiss(animated: true, completion: nil)
-        mainVC.deliveryAddressTableView.reloadData()
-        
     }
     
     
@@ -154,16 +159,18 @@ extension DeliveryAddressViewController:  UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        let deliveryAddress = textField.text!
-        mainVC.deliveryAddressArray.append(deliveryAddress)
-        print ("the array count is \(mainVC.deliveryAddressArray.count)")
+        let newAddress = textField.text!
+        viewModel.setDeliveryAddress(deliveryAddress: newAddress)
+
         
         self.deliveryAddressTableView.reloadData()
-        mainVC.deliveryAddressTableView.reloadData()
+ 
         
         //change view to second screen after return is clicked
         let foodSelectionVC = FoodSelectionViewController()
-        foodSelectionVC.deliveryAddressEntered = deliveryAddress
+        foodSelectionVC.deliveryAddressEntered = newAddress
+        
+        
         self.present (foodSelectionVC, animated: true, completion: nil)
         
         textField.text = "\(textField.text!)"
@@ -173,28 +180,29 @@ extension DeliveryAddressViewController:  UITextFieldDelegate {
 }
 
 extension DeliveryAddressViewController:  UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let deliveryAddress = viewModel.deliveryAddresses[indexPath.row].deliveryAddress
+        let deliveryAddressSelected = deliveryAddress
+        didSelectFoodSelection(deliveryAddress: deliveryAddressSelected)
+        print("Value: \(deliveryAddressSelected)")
+    }
+    
+}
+
+extension DeliveryAddressViewController:  UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let deliveryAddressCell = tableView.dequeueReusableCell(withIdentifier: "deliveryAddressCell", for: indexPath as IndexPath)
-        deliveryAddressCell.textLabel!.text = "\(mainVC.deliveryAddressArray[indexPath.row])"
+        
+        let deliveryAddress = viewModel.deliveryAddresses[indexPath.row]
+        
+        deliveryAddressCell.textLabel!.text = "\(deliveryAddress.deliveryAddress)"
+        
         return deliveryAddressCell
     }
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mainVC.deliveryAddressArray.count
+        return viewModel.deliveryAddresses.count
     }
-}
-
-extension DeliveryAddressViewController:  UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let deliveryAddressCell = tableView.dequeueReusableCell(withIdentifier: "deliveryAddressCell", for: indexPath as IndexPath)
-        print("Num: \(indexPath.row)")
-        
-        let deliveryAddressSelected = mainVC.deliveryAddressArray[indexPath.row]
-        didSelectFoodSelection(deliveryAddress: deliveryAddressSelected)
-        print("Value: \(mainVC.deliveryAddressArray[indexPath.row])")
-    }
-    
 }
