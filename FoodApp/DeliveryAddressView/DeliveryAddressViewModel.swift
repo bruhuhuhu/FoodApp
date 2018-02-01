@@ -22,7 +22,8 @@ class DeliveryAddressViewModel {
     }
     
     func getDeliveryAddress() -> [DeliveryAddress] {
-        return deliveryAddressManager.getDeliveryAddresses()
+        deliveryAddresses = deliveryAddressManager.getDeliveryAddresses()
+        return deliveryAddresses
     }
     
     func setDeliveryAddress(deliveryAddress: String?){
@@ -32,7 +33,6 @@ class DeliveryAddressViewModel {
             deliveryAddresses.append(newDeliveryAddress)
         }
         deliveryAddressManager.deliveryAddresses = deliveryAddresses
-        
 
     }
 }

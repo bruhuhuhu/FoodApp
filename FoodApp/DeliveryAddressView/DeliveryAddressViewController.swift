@@ -56,7 +56,6 @@ class DeliveryAddressViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.lightGray
         viewModel.getDeliveryAddress()
-       
         setupView()
         updateConstraints()
     }
@@ -161,8 +160,6 @@ extension DeliveryAddressViewController:  UITextFieldDelegate {
         textField.resignFirstResponder()
         let newAddress = textField.text!
         viewModel.setDeliveryAddress(deliveryAddress: newAddress)
-
-        
         self.deliveryAddressTableView.reloadData()
  
         
@@ -170,10 +167,8 @@ extension DeliveryAddressViewController:  UITextFieldDelegate {
         let foodSelectionVC = FoodSelectionViewController()
         foodSelectionVC.deliveryAddressEntered = newAddress
         
-        
         self.present (foodSelectionVC, animated: true, completion: nil)
-        
-        textField.text = "\(textField.text!)"
+        //textField.text = "\(textField.text!)"
         return false
     }
     

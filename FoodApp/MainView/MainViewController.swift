@@ -72,8 +72,6 @@ class MainViewController: UIViewController {
         return button
     }()
     
-//    
-//    var deliveryAddressArray = ["Current Location","Past Location 1"]
     let cellHeight = 50
     var deliveryAddressTableView = UITableView()
     
@@ -135,7 +133,6 @@ class MainViewController: UIViewController {
     // MARK: - Constraints
     
     func deliveryAddressTableViewConstraint(){
-        
         constrain(deliveryAddressTableView, deliveryAddressButton) { deliveryAddressTV, deliveryAddressBtn in
             deliveryAddressTV.width == deliveryAddressBtn.width
             deliveryAddressTV.height == 150

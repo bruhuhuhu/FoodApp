@@ -11,6 +11,8 @@ import Cartography
 
 
 class FoodSelectionViewController: UIViewController{
+    
+    lazy var viewModel = FoodSelectionViewModel()
 
     var deliveryAddressEntered: String = ""
 
@@ -60,6 +62,7 @@ class FoodSelectionViewController: UIViewController{
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.green
         self.navigationItem.title = deliveryAddressEntered
+        viewModel.getFoodSelection()
         setupView()
         updateConstraints()
     }
@@ -75,7 +78,7 @@ class FoodSelectionViewController: UIViewController{
         
         foodSelectionTableView.delegate = self
         foodSelectionTableView.dataSource = self
-        foodSelectionTableView.register(UITableViewCell.self, forCellReuseIdentifier: "partnerListCell")
+        foodSelectionTableView.register(UITableViewCell.self, forCellReuseIdentifier: "foodSelectionCell")
         
         self.view.addSubview(noticeCollectionView)
         self.view.addSubview(naviBar)
@@ -119,7 +122,6 @@ class FoodSelectionViewController: UIViewController{
     }
 
     func foodSelectionTableViewConstraint(){
-        
         constrain(foodSelectionTableView, noticeCollectionView) { foodSelectionTV, filterBar in
             
             foodSelectionTV.width == filterBar.width
@@ -132,7 +134,6 @@ class FoodSelectionViewController: UIViewController{
 
     
     func noticeCollectionViewConstraint(){
-        //noticeCollectionView.backgroundColor = UIColor.orange
         constrain (noticeCollectionView, filterBar){ noticeCV, filterBar in
             noticeCV.width == filterBar.width
             noticeCV.height == 91
@@ -163,28 +164,28 @@ class FoodSelectionViewController: UIViewController{
 
 extension FoodSelectionViewController: UITableViewDelegate {
     
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let food = viewModel.foodSelection[indexPath.row].foodName
         print("Num: \(indexPath.row)")
-        print("Value: \(foodSelectionArray[indexPath.row])")
+        print("Value: \(food)")
     }
 }
 
 extension FoodSelectionViewController:  UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return foodSelectionArray.count
+        return viewModel.foodSelection.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let partnerListCell = tableView.dequeueReusableCell(withIdentifier: "partnerListCell", for: indexPath as IndexPath)
-        partnerListCell.textLabel!.text = "\(foodSelectionArray[indexPath.row])"
-        return partnerListCell
+        let foodSelectionCell = tableView.dequeueReusableCell(withIdentifier: "foodSelectionCell", for: indexPath as IndexPath)
+        let food = viewModel.foodSelection[indexPath.row]
+        foodSelectionCell.textLabel!.text = "\(food.foodName)"
+        return foodSelectionCell
     }
 }
 
 extension FoodSelectionViewController: UICollectionViewDelegate {
-    
     func collectionView(_ collectionView: UICollectionView,
                         layout noticeCollectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {

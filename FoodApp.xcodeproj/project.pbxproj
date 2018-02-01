@@ -15,6 +15,9 @@
 		547049A32020FCDA00030F4E /* DeliveryAddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547049A22020FCDA00030F4E /* DeliveryAddressViewModel.swift */; };
 		547049A520217E7E00030F4E /* DeliveryAddressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547049A420217E7E00030F4E /* DeliveryAddressManager.swift */; };
 		547049A72021805F00030F4E /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547049A62021805F00030F4E /* MainViewModel.swift */; };
+		547049AB2021F7F100030F4E /* FoodSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547049AA2021F7F100030F4E /* FoodSelectionViewModel.swift */; };
+		547049AD2021F81B00030F4E /* FoodSelectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547049AC2021F81B00030F4E /* FoodSelectionManager.swift */; };
+		547049B12021F8BF00030F4E /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547049B02021F8BF00030F4E /* Food.swift */; };
 		54859309200DF792004B46DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54859308200DF792004B46DA /* AppDelegate.swift */; };
 		5485930E200DF792004B46DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5485930C200DF792004B46DA /* Main.storyboard */; };
 		54859310200DF792004B46DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5485930F200DF792004B46DA /* Assets.xcassets */; };
@@ -35,6 +38,9 @@
 		547049A22020FCDA00030F4E /* DeliveryAddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryAddressViewModel.swift; sourceTree = "<group>"; };
 		547049A420217E7E00030F4E /* DeliveryAddressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryAddressManager.swift; sourceTree = "<group>"; };
 		547049A62021805F00030F4E /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		547049AA2021F7F100030F4E /* FoodSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSelectionViewModel.swift; sourceTree = "<group>"; };
+		547049AC2021F81B00030F4E /* FoodSelectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSelectionManager.swift; sourceTree = "<group>"; };
+		547049B02021F8BF00030F4E /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		54859305200DF792004B46DA /* FoodApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54859308200DF792004B46DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5485930D200DF792004B46DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -82,7 +88,6 @@
 			children = (
 				54F13799200F50D700C62C99 /* DeliveryAddressViewController.swift */,
 				547049A22020FCDA00030F4E /* DeliveryAddressViewModel.swift */,
-				547049A02020804E00030F4E /* DeliveryAddress.swift */,
 			);
 			path = DeliveryAddressView;
 			sourceTree = "<group>";
@@ -91,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				5457EA1D2011FF1300E4A3E7 /* FoodSelectionViewController.swift */,
+				547049AA2021F7F100030F4E /* FoodSelectionViewModel.swift */,
 				5459B8FF201ABBB1000D049A /* FoodSelectionNoticeCollectionViewCell.swift */,
 			);
 			path = FoodSelectionView;
@@ -110,6 +116,24 @@
 				5457EA1B2011FD6600E4A3E7 /* PartnerListViewController.swift */,
 			);
 			path = PartnerListView;
+			sourceTree = "<group>";
+		};
+		547049AE2021F83D00030F4E /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				547049AC2021F81B00030F4E /* FoodSelectionManager.swift */,
+				547049A420217E7E00030F4E /* DeliveryAddressManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		547049AF2021F89100030F4E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				547049A02020804E00030F4E /* DeliveryAddress.swift */,
+				547049B02021F8BF00030F4E /* Food.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		548592FC200DF792004B46DA = {
@@ -133,7 +157,8 @@
 		54859307200DF792004B46DA /* FoodApp */ = {
 			isa = PBXGroup;
 			children = (
-				547049A420217E7E00030F4E /* DeliveryAddressManager.swift */,
+				547049AE2021F83D00030F4E /* Manager */,
+				547049AF2021F89100030F4E /* Model */,
 				5456F01F201EEA140005305C /* PartnerListView */,
 				5456F01E201EE9600005305C /* OrderConfirmationView */,
 				5456F01D201EE94B0005305C /* FoodSelectionView */,
@@ -290,7 +315,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				547049B12021F8BF00030F4E /* Food.swift in Sources */,
 				5457EA1E2011FF1300E4A3E7 /* FoodSelectionViewController.swift in Sources */,
+				547049AD2021F81B00030F4E /* FoodSelectionManager.swift in Sources */,
+				547049AB2021F7F100030F4E /* FoodSelectionViewModel.swift in Sources */,
 				54859309200DF792004B46DA /* AppDelegate.swift in Sources */,
 				5459B900201ABBB1000D049A /* FoodSelectionNoticeCollectionViewCell.swift in Sources */,
 				547049A12020804E00030F4E /* DeliveryAddress.swift in Sources */,
