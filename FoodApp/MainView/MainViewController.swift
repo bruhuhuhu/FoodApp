@@ -19,7 +19,8 @@ class MainViewController: UIViewController {
     var naviBar : UINavigationBar! = {
         let naviBar = UINavigationBar()
         let navItem = UINavigationItem();
-        let backBtn = UIBarButtonItem (barButtonSystemItem: .stop, target: self, action: nil)
+        //let backBtn = UIBarButtonItem (barButtonSystemItem: .stop, target: self, action: nil)
+        let backBtn = UIBarButtonItem (image: #imageLiteral(resourceName: "browserBackward"), style: .done , target: self, action: nil)
         navItem.leftBarButtonItem = backBtn
         naviBar.setItems([navItem], animated: false);
         
@@ -89,7 +90,6 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -99,10 +99,11 @@ class MainViewController: UIViewController {
     
     
     func setupView() {
-        deliveryAddressTableView.rowHeight = 50
+        deliveryAddressTableView.estimatedRowHeight = 50
+        deliveryAddressTableView.rowHeight = UITableViewAutomaticDimension
         deliveryAddressTableView.delegate = self
         deliveryAddressTableView.dataSource = self
-        deliveryAddressTableView.register(UITableViewCell.self, forCellReuseIdentifier: "deliveryAddressCell")
+        deliveryAddressTableView.register(MainViewTableViewCell.self, forCellReuseIdentifier: "deliveryAddressCell")
         
         self.view.addSubview(naviBar)
         self.view.addSubview(takeAwayLabel)
@@ -241,12 +242,15 @@ extension MainViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let deliveryAddressCell = tableView.dequeueReusableCell(withIdentifier: "deliveryAddressCell", for: indexPath as IndexPath)
-        
+        let deliveryAddressCell = tableView.dequeueReusableCell(withIdentifier: "deliveryAddressCell", for: indexPath as IndexPath) as! MainViewTableViewCell
         let deliveryAddress = viewModel.deliveryAddresses[indexPath.row]
         
-        deliveryAddressCell.textLabel!.text = "\(deliveryAddress.deliveryAddress)"
+        deliveryAddressCell.deliveryAddressLabel.text = "\(deliveryAddress.deliveryAddress)"
+        deliveryAddressCell.postalCodeLabel.text = "123321"
         
+        
+//        deliveryAddressCell.textLabel!.text = "\(deliveryAddress.deliveryAddress)"
+//
         return deliveryAddressCell
     }
     

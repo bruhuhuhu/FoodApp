@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		54455A8C202305FD004193C0 /* MainViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54455A8B202305FD004193C0 /* MainViewTableViewCell.swift */; };
 		5457EA1C2011FD6600E4A3E7 /* PartnerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457EA1B2011FD6600E4A3E7 /* PartnerListViewController.swift */; };
 		5457EA1E2011FF1300E4A3E7 /* FoodSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457EA1D2011FF1300E4A3E7 /* FoodSelectionViewController.swift */; };
 		5457EA202011FFB800E4A3E7 /* OrderConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457EA1F2011FFB800E4A3E7 /* OrderConfirmationViewController.swift */; };
@@ -18,9 +19,10 @@
 		547049AB2021F7F100030F4E /* FoodSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547049AA2021F7F100030F4E /* FoodSelectionViewModel.swift */; };
 		547049AD2021F81B00030F4E /* FoodSelectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547049AC2021F81B00030F4E /* FoodSelectionManager.swift */; };
 		547049B12021F8BF00030F4E /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547049B02021F8BF00030F4E /* Food.swift */; };
+		547049B32022BE8C00030F4E /* DeliveryAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547049B22022BE8C00030F4E /* DeliveryAddressTableViewCell.swift */; };
+		547049B52022E52D00030F4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 547049B42022E52D00030F4E /* Assets.xcassets */; };
 		54859309200DF792004B46DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54859308200DF792004B46DA /* AppDelegate.swift */; };
 		5485930E200DF792004B46DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5485930C200DF792004B46DA /* Main.storyboard */; };
-		54859310200DF792004B46DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5485930F200DF792004B46DA /* Assets.xcassets */; };
 		54859313200DF792004B46DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54859311200DF792004B46DA /* LaunchScreen.storyboard */; };
 		54859320200DFC1C004B46DA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5485931F200DFC1C004B46DA /* MainViewController.swift */; };
 		54F1379A200F50D700C62C99 /* DeliveryAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F13799200F50D700C62C99 /* DeliveryAddressViewController.swift */; };
@@ -29,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		110B76B47D2B594AB4ADE16A /* Pods-FoodApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodApp/Pods-FoodApp.release.xcconfig"; sourceTree = "<group>"; };
+		54455A8B202305FD004193C0 /* MainViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewTableViewCell.swift; sourceTree = "<group>"; };
 		5457EA192011FB2200E4A3E7 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		5457EA1B2011FD6600E4A3E7 /* PartnerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerListViewController.swift; sourceTree = "<group>"; };
 		5457EA1D2011FF1300E4A3E7 /* FoodSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSelectionViewController.swift; sourceTree = "<group>"; };
@@ -41,10 +44,11 @@
 		547049AA2021F7F100030F4E /* FoodSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSelectionViewModel.swift; sourceTree = "<group>"; };
 		547049AC2021F81B00030F4E /* FoodSelectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSelectionManager.swift; sourceTree = "<group>"; };
 		547049B02021F8BF00030F4E /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		547049B22022BE8C00030F4E /* DeliveryAddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryAddressTableViewCell.swift; sourceTree = "<group>"; };
+		547049B42022E52D00030F4E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = FoodApp/Assets.xcassets; sourceTree = "<group>"; };
 		54859305200DF792004B46DA /* FoodApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54859308200DF792004B46DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5485930D200DF792004B46DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		5485930F200DF792004B46DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		54859312200DF792004B46DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		54859314200DF792004B46DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5485931F200DFC1C004B46DA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +83,7 @@
 			children = (
 				5485931F200DFC1C004B46DA /* MainViewController.swift */,
 				547049A62021805F00030F4E /* MainViewModel.swift */,
+				54455A8B202305FD004193C0 /* MainViewTableViewCell.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -87,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				54F13799200F50D700C62C99 /* DeliveryAddressViewController.swift */,
+				547049B22022BE8C00030F4E /* DeliveryAddressTableViewCell.swift */,
 				547049A22020FCDA00030F4E /* DeliveryAddressViewModel.swift */,
 			);
 			path = DeliveryAddressView;
@@ -141,6 +147,7 @@
 			children = (
 				54859307200DF792004B46DA /* FoodApp */,
 				54859306200DF792004B46DA /* Products */,
+				547049B42022E52D00030F4E /* Assets.xcassets */,
 				33770D15B00CCDD09691A6E4 /* Pods */,
 				B03A718A85BD0958D4C88746 /* Frameworks */,
 			);
@@ -166,7 +173,6 @@
 				5456F01B201EE91C0005305C /* MainView */,
 				5485930C200DF792004B46DA /* Main.storyboard */,
 				54859308200DF792004B46DA /* AppDelegate.swift */,
-				5485930F200DF792004B46DA /* Assets.xcassets */,
 				54859311200DF792004B46DA /* LaunchScreen.storyboard */,
 				54859314200DF792004B46DA /* Info.plist */,
 			);
@@ -245,7 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54859313200DF792004B46DA /* LaunchScreen.storyboard in Resources */,
-				54859310200DF792004B46DA /* Assets.xcassets in Resources */,
+				547049B52022E52D00030F4E /* Assets.xcassets in Resources */,
 				5485930E200DF792004B46DA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,10 +330,12 @@
 				547049A12020804E00030F4E /* DeliveryAddress.swift in Sources */,
 				547049A520217E7E00030F4E /* DeliveryAddressManager.swift in Sources */,
 				54859320200DFC1C004B46DA /* MainViewController.swift in Sources */,
+				54455A8C202305FD004193C0 /* MainViewTableViewCell.swift in Sources */,
 				547049A32020FCDA00030F4E /* DeliveryAddressViewModel.swift in Sources */,
 				5457EA202011FFB800E4A3E7 /* OrderConfirmationViewController.swift in Sources */,
 				5457EA1C2011FD6600E4A3E7 /* PartnerListViewController.swift in Sources */,
 				54F1379A200F50D700C62C99 /* DeliveryAddressViewController.swift in Sources */,
+				547049B32022BE8C00030F4E /* DeliveryAddressTableViewCell.swift in Sources */,
 				547049A72021805F00030F4E /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

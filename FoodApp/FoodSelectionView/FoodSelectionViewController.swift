@@ -21,7 +21,8 @@ class FoodSelectionViewController: UIViewController{
     var naviBar : UINavigationBar! = {
         
         let naviBar = UINavigationBar()
-        let backBtn = UIBarButtonItem (barButtonSystemItem: .stop, target: self, action: #selector (backPressed))
+        //let backBtn = UIBarButtonItem (barButtonSystemItem: .stop, target: self, action: #selector (backPressed))
+        let backBtn = UIBarButtonItem (image: #imageLiteral(resourceName: "browserBackward"), style: .done , target: self, action: #selector (backPressed))
         let cartBtn = UIBarButtonItem (barButtonSystemItem: .bookmarks, target: self, action: nil)
         let navItem = UINavigationItem();
         navItem.leftBarButtonItem = backBtn
@@ -57,14 +58,18 @@ class FoodSelectionViewController: UIViewController{
     
     
     // MARK: - Setup
-    
+    override func loadView() {
+        super.loadView()
+        self.view.backgroundColor = UIColor.white
+        viewModel.getFoodSelection()
+        setupView()
+        updateConstraints()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.green
         self.navigationItem.title = deliveryAddressEntered
-        viewModel.getFoodSelection()
-        setupView()
-        updateConstraints()
+
     }
     
     func setupView(){
@@ -142,7 +147,6 @@ class FoodSelectionViewController: UIViewController{
         }
     }
     
-    //----------------------------------------------------//
     // MARK: Screen dismiss setup
     @objc func backPressed (){
         let currentController = self.getCurrentViewController()
