@@ -1,1 +1,1 @@
-Exploring with Cocoapods and RxSwift
+Exploring with RxCocoa and RxSwift
